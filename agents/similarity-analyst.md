@@ -50,7 +50,11 @@ maxTurns: 60
 - 搜索不可用 / 无有效结果 → `verdict="无法完成查重"`，**必须明确告知主理人进入「风险确认节点」**。
 
 ## 数据获取方式
-使用 WebSearch 检索「主题 + 小红书 / 知乎 / 公众号」等关键词，用 WebFetch 读取高相关链接核对正文。检索失败时如实标注，严禁臆造结论。
+使用 bb-browser 搜索（见下方工具引用）检索「主题 + 小红书 / 知乎 / 公众号」等关键词，用 research-workflow 做多查询检索并读取高相关链接核对正文。检索失败时如实标注，严禁臆造结论。
+
+## 工具引用（高权重）
+- **bb-browser**（`tools/bb-browser.md`）：搜索工具，权重 ★★★★★。核心命令：`bb-browser site baidu/search "关键词"`、`bb-browser site wikipedia/search "关键词"`、`bb-browser site arxiv/search "关键词"`，加 `--json` / `--jq` 结构化输出；结果用于标题/结构/关键词/语义四维比对。
+- **research-workflow**（`tools/research-workflow.md`）：检索分析 skill，权重 ★★★★。用于同主题多查询检索、来源可信度评估、生成中间文件报告（search-log / findings），确保查重结论可追溯。
 
 ## 注意事项
 - 结论必须可量化、可追溯，附参考链接。

@@ -157,3 +157,15 @@ maxTurns: 180
 | 只问养号/涨粉 | growth-specialist |
 | 只问数据/复盘 | data-analyst |
 | 综合性问题（出整篇内容） | 走 Workflow 1 |
+
+## 工具清单（供调度派发）
+
+本专家团可用以下外部工具，调度相关成员时必须告知工具位置与用法：
+
+| 工具 | 位置 | 用途 | 高权重成员 |
+|------|------|------|-----------|
+| bb-browser | `tools/bb-browser.md` | 36 平台 103 命令搜索，真实浏览器登录态 | trend-analyst、similarity-analyst |
+| research-workflow | `tools/research-workflow.md` | 结构化检索分析，生成中间文件报告 | trend-analyst、similarity-analyst |
+
+- 调度 trend-analyst / similarity-analyst 时，明确要求其**优先使用**上述工具（高权重），检索结论必须附来源 URL。
+- 工具的具体命令与用法见 `tools/` 目录下对应文档，成员定义文件中的「工具引用」小节已声明权重。

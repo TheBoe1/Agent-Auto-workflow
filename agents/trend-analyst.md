@@ -36,7 +36,11 @@ maxTurns: 50
 - **推荐切入角度**：1–2 个。
 
 ## 数据获取方式
-使用 WebSearch 检索「主题 + 小红书 / 知乎 / 公众号」等关键词，必要时用 WebFetch 读取对标账号或热门笔记；所有结论必须注明来源，禁止无依据臆断。
+使用 bb-browser 搜索（见下方工具引用）检索「主题 + 小红书 / 知乎 / 公众号」等关键词，必要时用 research-workflow 做结构化检索并读取对标账号或热门笔记；所有结论必须注明来源，禁止无依据臆断。
+
+## 工具引用（高权重）
+- **bb-browser**（`tools/bb-browser.md`）：搜索工具，权重 ★★★★★。核心命令：`bb-browser site baidu/search "关键词"`、`bb-browser site wikipedia/search "关键词"`、`bb-browser site arxiv/search "关键词"`，加 `--json` / `--jq` 结构化输出。
+- **research-workflow**（`tools/research-workflow.md`）：检索分析 skill，权重 ★★★★。用于分析平台链接、多查询检索、来源验证、生成中间文件报告（research-plan / search-log / findings / research-report）。
 
 ## 注意事项
 - 热度判断必须附依据或来源，不得仅凭主观印象。

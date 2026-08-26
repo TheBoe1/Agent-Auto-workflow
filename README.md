@@ -53,18 +53,34 @@
 MCN-Agent-Studio/
 ├── README.md                    # 项目说明
 ├── agents/                      # 8 个专家角色定义（Markdown）
-│   ├── team-lead.md             #   主理人（含 SOP 编排）
-│   ├── trend-analyst.md         #   趋势选题分析师
-│   ├── similarity-analyst.md    #   查重检测师
+│   ├── team-lead.md             #   主理人（含 SOP 编排 + 工具清单）
+│   ├── trend-analyst.md         #   趋势选题分析师（高权重：bb-browser + research-workflow）
+│   ├── similarity-analyst.md    #   查重检测师（高权重：bb-browser + research-workflow）
 │   ├── reframe-strategist.md    #   内容重构师
 │   ├── viral-copywriter.md      #   爆款文案师
 │   ├── visual-designer.md       #   视觉封面师
 │   ├── growth-specialist.md     #   养号增长师
 │   └── data-analyst.md          #   数据复盘师
-└── workflows/                   # 工作流定义
-    ├── content-pipeline.md      #   内容生产流水线（方案一/方案二状态机）
-    └── account-growth.md        #   养号增长流程（三阶段）
+├── workflows/                   # 工作流定义
+│   ├── content-pipeline.md      #   内容生产流水线（方案一/方案二状态机）
+│   └── account-growth.md        #   养号增长流程（三阶段）
+├── tools/                       # 工具文件夹（agent 可调用）
+│   ├── README.md                #   工具索引 + 协作关系
+│   ├── bb-browser.md            #   搜索工具（36 平台 103 命令）
+│   └── research-workflow.md     #   检索分析 skill（结构化研究 + 中间文件报告）
+└── memory/                      # 记忆文件（跨会话持久化）
+    ├── MEMORY.md                #   项目长期记忆（架构/工具/约束）
+    └── CHANGELOG.md             #   变更日志
 ```
+
+## 工具与检索能力
+
+| 工具 | 位置 | 能力 | 高权重 agent |
+|------|------|------|-------------|
+| bb-browser | `tools/bb-browser.md` | 36 平台 103 命令，真实浏览器登录态搜索，`--json`/`--jq` 结构化输出 | 闻风向、查无异 |
+| research-workflow | `tools/research-workflow.md` | 结构化研究四阶段（Planning→Execution→Analysis→Synthesis），生成中间文件报告 | 闻风向、查无异 |
+
+检索类 agent（闻风向 / 查无异）在定义文件中通过「工具引用」小节声明了工具的**调用权重**，主理人在 `tools/` 索引中完成调度派发。
 
 ## 核心工作流：内容生产流水线
 
