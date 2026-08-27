@@ -46,8 +46,13 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 | 工具 | 位置 | 用途 | 高权重 agent |
 |---|---|---|---|
-| bb-browser | `tools/bb-browser.md` | 36 平台 103 命令搜索，`--json`/`--jq` | competitor-scout |
-| research-workflow | `tools/research-workflow.md` | 结构化检索分析，生成中间文件报告 | competitor-scout |
+| content-research | `tools/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`--demo` 零配置 | competitor-scout（猎同频） |
+| humanize-writing | `tools/humanize-writing.md` | 文本拟人化，LLM 抽象层，`--demo` 零配置 | viral-copywriter（缪生花） |
+| engagement-analyzer | `tools/engagement-analyzer.md` | 互动内容分析，输出报告，`--demo` 零配置 | growth-analyst（步得清） |
+| bb-browser *底层* | `tools/bb-browser.md` | 真实浏览器搜索（content-research 依赖） | competitor-scout |
+| research-workflow *底层* | `tools/research-workflow.md` | 结构化研究方法论（content-research 依赖） | competitor-scout |
+
+> 三个应用工具均支持 `--demo` 零配置运行（用内置脱敏样例），真实场景仅需最小配置（Chrome / LLM key）。详见各工具文件与 `.env.example`。
 
 ## 参考文件
 

@@ -1,0 +1,29 @@
+# ===== 密钥与配置（绝不进仓库）=====
+.env
+.env.local
+*.env
+.env.example 可保留（仅模板，无真实值）
+
+# ===== 浏览器与凭证 =====
+cookies.txt
+*.cookie
+.bb-browser/
+
+# ===== 依赖与构建产物 =====
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# ===== 缓存与运行产物 =====
+.cache/
+runs/
+
+# ===== 用户导出数据（可能含隐私）=====
+data/
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "note": "engagement-analyzer --demo 内置样例，数据已脱敏，数字为示意。",
+    "account_archetype": "心内科男医生 IP（山东）",
+    "sample_size": 8
+  },
+  "posts": [
+    {
+      "id": "P-001",
+      "title": "病房里最安静的病人，往往藏着最重的故事",
+      "likes": 32100,
+      "collects": 28900,
+      "comments": 2100,
+      "shares": 640,
+      "tags": ["医生日常", "情感", "生活感悟"],
+      "publish_hour": 23,
+      "hook_type": "好奇型",
+      "excerpt": "今晚夜班，半小时连着来了两个危重病人……"
+    },
+    {
+      "id": "P-002",
+      "title": "夜班第3个病人进来时，我看了眼时钟：凌晨2点40",
+      "likes": 19800,
+      "collects": 17400,
+      "comments": 1560,
+      "shares": 410,
+      "tags": ["医院里的那些事", "成年人的世界"],
+      "publish_hour": 1,
+      "hook_type": "数据型",
+      "excerpt": "泡面已经坨了，第三个病人是被轮椅推进来的……"
+    },
+    {
+      "id": "P-003",
+      "title": "他说想回家，我说那先让我把检查做完",
+      "likes": 15600,
+      "collects": 12100,
+      "comments": 980,
+      "shares": 290,
+      "tags": ["医者仁心", "人间烟火"],
+      "publish_hour": 22,
+      "hook_type": "冲突型",
+      "excerpt": "大爷一路没吭声，只是安静地配合……"
+    },
+    {
+      "id": "P-004",
+      "title": "抗老这件事，30岁就该开始了",
+      "likes": 8900,
+      "collects": 15200,
+      "comments": 720,
+      "shares": 180,
+      "tags": ["抗老", "护肤", "医生推荐"],
+      "publish_hour": 20,
+      "hook_type": "观点型",
+      "excerpt": "作为心内科医生，我更在意血管内皮老化……"
+    },
+    {
+      "id": "P-005",
+      "title": "门诊遇到一个姑娘，把面膜当药敷",
+      "likes": 6400,
+      "collects": 7100,
+      "comments": 540,
+      "shares": 120,
+      "tags": ["护肤误区", "科普"],
+      "publish_hour": 19,
+      "hook_type": "故事型",
+      "excerpt": "她问我能不能天天敷，我说先看看成分表……"
+    },
+    {
+      "id": "P-006",
+      "title": "今天不聊病，聊聊我那双胞胎闺女",
+      "likes": 4200,
+      "collects": 3100,
+      "comments": 1300,
+      "shares": 90,
+      "tags": ["生活", "日常"],
+      "publish_hour": 12,
+      "hook_type": "生活型",
+      "excerpt": "下班回家，俩娃在门口等我……"
+    },
+    {
+      "id": "P-007",
+      "title": "一条视频讲清楚支架术后怎么吃",
+      "likes": 3100,
+      "collects": 9800,
+      "comments": 410,
+      "shares": 210,
+      "tags": ["支架", "饮食", "科普"],
+      "publish_hour": 18,
+      "hook_type": "干货型",
+      "excerpt": "术后饮食三个原则……"
+    },
+    {
+      "id": "P-008",
+      "title": "生日那天，我在值班",
+      "likes": 2700,
+      "collects": 1900,
+      "comments": 880,
+      "shares": 60,
+      "tags": ["医生日常", "情感"],
+      "publish_hour": 0,
+      "hook_type": "情感型",
+      "excerpt": "蛋糕是同事给的，蜡烛吹完继续看病人……"
+    }
+  ]
+}

@@ -23,8 +23,9 @@ maxTurns: 90
 6. **分级判定**：输出 duplicate / similarity / risk 三级结论 + 处置建议。
 
 ## 工具引用（高权重）
-- **bb-browser**（`tools/bb-browser.md`）：搜索工具，权重 ★★★★★。核心命令：`bb-browser site baidu/search "关键词"`、`bb-browser site wikipedia/search "关键词"`、`bb-browser site arxiv/search "关键词"`、`bb-browser site zhihu/search "关键词"`，加 `--json` / `--jq` 结构化输出。
-- **research-workflow**（`tools/research-workflow.md`）：检索分析 skill，权重 ★★★★。用于分析平台链接、多查询检索、来源可信度评估、生成中间文件报告（research-plan / search-log / findings / research-report）。
+- **content-research**（`tools/content-research.md`）：**统一检索入口，权重 ★★★★★，猎同频首选调用**。封装 bb-browser + research-workflow，对外暴露单一 Tool Schema，支持 `--demo`（零配置内置样例）与真实检索（quick/deep 两种模式）。输出 findings / sources / similarity，所有结论附来源 URL。
+- **bb-browser**（`tools/bb-browser.md`）：底层搜索工具，权重 ★★★。content-research 真实模式依赖它（需 Node + 系统 Chrome），核心命令 `bb-browser site baidu/search "关键词"` 等，支持 `--json` / `--jq`。
+- **research-workflow**（`tools/research-workflow.md`）：底层检索方法论，权重 ★★★。content-research 的 deep 模式复用其四阶段（Planning→Execution→Analysis→Synthesis），生成 research-plan / search-log / findings / research-report。
 
 ## 工作流程
 1. 接收主题 / 账号定位 / 目标用户。

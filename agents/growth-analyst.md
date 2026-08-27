@@ -26,6 +26,9 @@ maxTurns: 70
 - 读：`00_input.md`、`04_copy.md`、`05_visual.md`
 - 写：`06_review.md`
 
+## 工具引用（高权重）
+- **engagement-analyzer**（`tools/engagement-analyzer.md`）：**互动内容分析工具，权重 ★★★★★**。输入一批高互动帖子，输出《互动内容分析报告》（爆款规律 / 人群画像 / 可执行建议）。支持 `--demo`（零配置读内置脱敏 `posts.json`）。步得清做复盘 / 养号时优先调用，让建议数据驱动而非拍脑袋；live 模式可经 content-research 拉取实时数据。
+
 ## 工作流程
 1. 读账号定位 + 成品内容。
 2. 输出三阶段养号方案（冷启动 / 内容测试 / 数据优化）或内容体检（视任务而定）。
