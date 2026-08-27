@@ -17,6 +17,18 @@
 
 > v1（8）→ v2（6）：闻风向 + 查无异 → 猎同频；谷新裁 → 并入缪生花；步渐涨 + 潘得清 → 步得清；新增采真人。
 
+## 四层架构（V0.3）
+
+`Agents`（5 名专业成员）+ `Tools`（可被调用的能力）+ `Memory`（长期内容资产）+ `team-lead`（编排者 / 规则制定者 / **记忆唯一管理者** / 最终审核者，即 MCN Operating System）。
+
+## Content Memory（长期内容资产系统 · V0.3）
+
+`memory/` 不再是单一 MEMORY.md，而是六大记忆类：content-history / topic-memory / angle-memory / story-memory / style-memory / performance-memory。详见 `memory/README.md`。
+
+- **唯一管理者 = team-lead**：Agent 只 READ Memory，不得 WRITE；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。
+- **防重复三层**：标题查重（猎同频）→ 角度防重复（门禁③，angles/）→ 内容历史（content/）。
+- 种子数据：柯医生账号的 profile / style / topic / angle 初始条目已填，系统建好即非空可用。
+
 ## 工具清单
 
 **应用工具（agent 直接调用，均支持 `--demo` 零配置）**

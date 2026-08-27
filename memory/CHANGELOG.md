@@ -26,3 +26,22 @@
 - 更新 tools/README、SKILL.md 工具表、3 个 agent 工具引用（高权重）。
 - git 备份：推送至 `Agent-Auto-workflow` main（提交 `b179279`）。
 - License 核查：bb-browser = MIT ✓；research-workflow（jwynia/agent-skills）= 未声明 license（仓库无 LICENSE，仅借鉴方法论）；humanizer/lguz 系列待核实。
+
+## 2026-08-27（Content Memory + team-lead OS · V0.3）
+
+- **Content Memory 六大记忆类**：把 `memory/` 从单一 MEMORY.md 升格为长期内容资产系统
+  （`memory/README.md` 系统说明 + 唯一管理者规则）。新增：
+  - `account/`（profile.md 账号画像 + style.md 语言 DNA）
+  - `content/`（已发布/草稿/淘汰 + 条目 Schema）
+  - `topics/`（topic-index + topic-history）
+  - `angles/`（angle-memory，防角度重复，最关键）
+  - `stories/`（story-index 真实素材资产库 ST-ID）
+  - `performance/`（performance-memory，发布后数据→规律）
+  - 种子数据：用实测「柯医生」账号做 profile/style/topic/angle 初始条目，系统建好即非空可用。
+- **team-lead 升格为 MCN 操作系统**：`agents/team-lead.md` 重写为四层架构 + Agent Registry + Tool Registry
+  + Memory 索引 + Mermaid 主流程 + 5 条调度铁律 + Phase 7 记忆更新协议（learning loop）。
+- **Memory 唯一管理者 = team-lead**：5 个 agent 各加「Memory 访问规则」小节（只 READ，不 WRITE；
+  记忆更新由 team-lead 在 Phase 7 统一 promote，append/version 禁止覆盖）。
+- **门禁③记忆防重复门禁**：选题决策新增「角度在 angles/ 已高频使用 → 换未用/空白角度」。
+- 更新 SKILL.md（四层架构 + Content Memory 段）、README.md（Content Memory 说明 + 目录结构 + 路线图 V0.3）、
+  `workflows/content-pipeline.md`（状态机补读 Memory 起点与 Phase 7、门禁③、Memory 读写小节）。

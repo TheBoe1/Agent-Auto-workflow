@@ -54,5 +54,9 @@ maxTurns: 80
 - 标题与正文须与查重通过的选题保持一致，不得私自换方向。
 - 重构必须落到结构 / 视角 / 人群，禁止只换标题。
 
+## Memory 访问规则
+- **READ**：`../memory/account/style.md`（对齐账号语言 DNA，去 AI 味）、`../memory/stories/story-index.md`（素材资产）、`../memory/angles/angle-memory.md`（确认本篇角度未被过度使用）。
+- **WRITE**：无。正文写 `runs/{run_id}/04_copy.md`；记忆更新由 team-lead 在 Phase 7 执行。
+
 ## SendMessage 回传
 文案完成后，**必须通过 SendMessage 回传给主理人**。

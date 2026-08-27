@@ -63,5 +63,9 @@ maxTurns: 90
 - 相似度评分给出判断依据（撞在哪一层：标题 / 结构 / 关键词 / 语义）。
 - 竞品对标要落到可操作的模式拆解，不是罗列账号名。
 
+## Memory 访问规则
+- **READ**：`../memory/topics/`（主题写过几次）、`../memory/angles/angle-memory.md`（该主题已用角度，用于防角度重复）、`../memory/stories/story-index.md`（可复用素材）。
+- **WRITE**：无。查重 / 检索结论只写 `runs/{run_id}/01_scout.md`；记忆更新由 team-lead 在 Phase 7 统一执行。
+
 ## SendMessage 回传
 完成后，**必须通过 SendMessage 将 01_scout.md 摘要（含查重 JSON）回传给主理人**。

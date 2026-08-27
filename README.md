@@ -46,6 +46,25 @@
 
 > v1（8 Agent）→ v2（6 Agent）集成：闻风向 + 查无异 → **猎同频**；谷新裁 → 并入 **缪生花**；步渐涨 + 潘得清 → **步得清**；新增 **采真人**。
 
+## Content Memory（长期内容资产系统）
+
+系统由四层构成：**Agents**（5 名专业成员）+ **Tools**（可被调用的能力）+ **Memory**（长期内容资产）+ **team-lead**（编排者 / 规则制定者 / **记忆唯一管理者** / 最终审核者，即 MCN Operating System）。
+
+Memory 不是「聊天记忆」，而是团队的**内容资产库**——账号过去说过什么、用过什么角度、讲过什么故事、采用过什么表达、什么内容真正有效。它解决的是反复踩同一个重复坑的问题（今天写「用了 30 天 AI」、明天又写一遍）。
+
+六大记忆类（详见 `memory/README.md`）：
+
+| 记忆类 | 路径 | 作用 |
+|--------|------|------|
+| content-history | `memory/content/` | 已发布 / 草稿 / 淘汰登记，防重发 |
+| topic-memory | `memory/topics/` | 主题树 + 使用次数 + 已用角度 |
+| angle-memory | `memory/angles/angle-memory.md` | 主题→已用角度（**防角度重复，最关键**） |
+| story-memory | `memory/stories/story-index.md` | 真实素材资产库（ST-ID 资产化，非一次性） |
+| style-memory | `memory/account/style.md` | 账号语言 DNA（去 AI 味靠它，而非每次重猜） |
+| performance-memory | `memory/performance/performance-memory.md` | 发布后数据 → 有效规律（learning loop 基础） |
+
+> **唯一管理者 = team-lead**：Agent 只 READ Memory，不得直接写；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。这是防止 Memory 自相矛盾的关键设计。
+
 ## 目录结构
 
 ```
@@ -80,9 +99,27 @@ MCN-Agent-Studio/
 ├── artifacts/                   # 中间文件模板
 │   └── templates/
 │       └── TEMPLATES.md         #   8 个中间文件模板（含元信息头）
-└── memory/                      # 记忆文件（跨会话持久化）
+└── memory/                      # Content Memory 六大记忆类（跨会话持久化）
+    ├── README.md                #   系统说明 + 唯一管理者(team-lead)规则
     ├── MEMORY.md                #   项目长期记忆（架构/工具/约束）
-    └── CHANGELOG.md             #   变更日志
+    ├── CHANGELOG.md             #   变更日志
+    ├── account/                 #   账号资产
+    │   ├── profile.md           #     账号画像（种子：柯医生数据）
+    │   └── style.md             #     style-memory 语言 DNA
+    ├── content/                 #   content-history
+    │   ├── README.md            #     条目 Schema
+    │   ├── published/           #     已发布
+    │   ├── drafts/              #     草稿
+    │   └── rejected/            #     淘汰
+    ├── topics/                  #   topic-memory
+    │   ├── topic-index.md       #     主题树 + 使用次数
+    │   └── topic-history.md     #     选题时间序日志
+    ├── angles/                  #   angle-memory
+    │   └── angle-memory.md      #     主题→已用角度（防角度重复）
+    ├── stories/                 #   story-memory
+    │   └── story-index.md       #     真实素材资产库（ST-ID）
+    └── performance/             #   performance-memory
+        └── performance-memory.md #    发布后数据 → 有效规律
 ```
 
 ## 工具与检索能力
@@ -183,8 +220,9 @@ Phase 6  主理人汇编 → 输出「可直接发布」的内容包
 - [x] V0.1 选题 → 查重 → 重构 → 文案（8 名专家定义 + 工作流）
 - [x] V0.2 集成精简为 6 名专家 + 真实素材采集 + 中间文件流转 + 工具层（bb-browser + research-workflow）
 - [x] V0.2.1 工具工程化：3 个应用工具（content-research / humanize-writing / engagement-analyzer）+ 统一 Tool Schema + Demo 零配置 + 安全/license 基线
-- [ ] V0.3 竞品分析、账号画像、爆款拆解自动化
-- [ ] V0.4 自动发布、数据采集、增长优化闭环
+- [x] V0.3 Content Memory 六大记忆类（account/content/topics/angles/stories/performance）+ team-lead 升格为 MCN 操作系统（注册表 + Mermaid 主流程 + 5 条调度铁律 + 记忆唯一管理者 + Phase 7 记忆更新协议）
+- [ ] V0.4 竞品分析、账号画像、爆款拆解自动化
+- [ ] V0.5 自动发布、数据采集、增长优化闭环（先验证 10–20 轮选题/角度不重复，再接 Cron→团队→人工审核，最后才自动发布）
 
 ## 技术落地建议
 

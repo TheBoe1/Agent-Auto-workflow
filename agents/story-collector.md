@@ -46,5 +46,9 @@ maxTurns: 60
 - 医疗等敏感内容必须脱敏，不留可识别信息。
 - 严禁把 AI 虚构内容写入素材库——这是本 agent 存在的意义。
 
+## Memory 访问规则
+- **READ**：`../memory/stories/story-index.md`（已有资产，避免重复采集、可复用）、`../memory/account/style.md`（采集时对齐账号调性）。
+- **WRITE**：无。本 run 素材写 `runs/{run_id}/02_stories.md`；新故事资产化由 team-lead 在 Phase 7 登记 ST-ID。
+
 ## SendMessage 回传
 完成后回传 `02_stories.md` 摘要（故事条数、可信度分布）给主理人。

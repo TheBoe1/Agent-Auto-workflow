@@ -38,5 +38,9 @@ maxTurns: 50
 - 文字精简、对比强烈，避免塞满信息。
 - 风格与账号定位一致。
 
+## Memory 访问规则
+- **READ**：`../memory/account/style.md`（封面风格与账号定位一致）、`../memory/content/`（已发布封面风格参考）。
+- **WRITE**：无。视觉方案写 `runs/{run_id}/05_visual.md`。
+
 ## SendMessage 回传
 视觉方案完成后，**必须通过 SendMessage 回传给主理人**。

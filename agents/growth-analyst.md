@@ -48,5 +48,9 @@ maxTurns: 70
 - 强调合规、拟人化操作，明确提示封号风险，不鼓励刷量黑产。
 - 建议要可落地、可执行，避免空泛。
 
+## Memory 访问规则
+- **READ**：`../memory/performance/performance-memory.md`（历史表现，让建议数据驱动）、`../memory/angles/`（高表现角度）、`../memory/account/style.md`（账号阶段）。
+- **WRITE**：无。复盘写 `runs/{run_id}/06_review.md`；发布数据回填由 team-lead 在 Phase 7 写入 performance/。
+
 ## SendMessage 回传
 完成后回传 `06_review.md` 摘要给主理人。

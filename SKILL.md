@@ -35,6 +35,23 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 | visual-designer | 乔美设 | 视觉封面师 | 封面、配色、配图 prompt |
 | growth-analyst | 步得清 | 增长复盘师 | 养号、冷启动、数据复盘、发布时机 |
 
+## 四层架构与 Content Memory
+
+系统由四层构成：**Agents**（5 名专业成员）+ **Tools**（可被调用的能力）+ **Memory**（长期内容资产）+ **team-lead**（编排者 / 规则制定者 / 记忆唯一管理者 / 最终审核者，即 MCN Operating System）。
+
+**Content Memory（长期内容资产）** 是团队防重复与积累账号资产的核心，包含六大记忆类：
+
+| 记忆类 | 路径 | 作用 |
+|--------|------|------|
+| content-history | `memory/content/` | 已发布 / 草稿 / 淘汰登记，防重发 |
+| topic-memory | `memory/topics/` | 主题树 + 使用次数 + 已用角度 |
+| angle-memory | `memory/angles/angle-memory.md` | 主题→已用角度（防角度重复，最关键） |
+| story-memory | `memory/stories/story-index.md` | 真实素材资产库（ST-ID） |
+| style-memory | `memory/account/style.md` | 账号语言 DNA（去 AI 味靠它） |
+| performance-memory | `memory/performance/performance-memory.md` | 发布后数据 → 有效规律 |
+
+> **唯一管理者 = team-lead**：Agent 只 READ Memory，不得直接写；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。详见 `memory/README.md` 与 `agents/team-lead.md`。
+
 ## 如何启动（编排 SOP）
 
 1. **主理人建团队**：team-lead 用 TeamCreate 建立团队，成员为其余 5 个 Agent ID。
@@ -59,7 +76,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 - `agents/`：6 个角色详细定义（职责、输入输出、工具权重）
 - `workflows/`：内容生产流水线 + 养号增长流程
 - `artifacts/templates/`：8 个中间文件模板
-- `memory/`：项目长期记忆与变更日志
+- `memory/`：Content Memory 六大记忆类（详见 `memory/README.md`，唯一管理者 = team-lead）
 
 ## 铁律
 
