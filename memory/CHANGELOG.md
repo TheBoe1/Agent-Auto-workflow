@@ -72,4 +72,16 @@
 - **业务调用链 + Cron 协议（#31）**：
   - `team-lead.md` 新增「十二、业务调用链」与「十三、定时任务（Cron）调度规则」（三阶段演进 + 调度协议 + 门禁不可绕过约束）。
   - `registry/workflows.md` 补调用链图。
-- 待做：**#32 tools/ 子文件夹重组织**（`research/` `engagement/` `writing/` 三分）——因改 20+ 相对路径，按铁律待用户确认后再做。
+- **#32 已完成**（提交 `dcb8a84`）：见下条。
+
+## 2026-08-27（tools/ 子文件夹重组织 · V0.4 #32，提交 `dcb8a84`）
+
+- **`tools/` 重组织为三子文件夹**：
+  - `tools/research/`：`bb-browser.md`、`research-workflow.md`、`content-research.md`（整合层 Facade）
+  - `tools/engagement/`：`engagement-analyzer.md`
+  - `tools/writing/`：`humanize-writing.md`
+  - `tools/README.md` 留在 `tools/` 原位。
+- **全局重写 20+ 工具路径引用**：root README/SKILL、`registry/tools.md`、`agents/{team-lead,competitor-scout,growth-analyst,viral-copywriter}.md`、`memory/{MEMORY,CHANGELOG}.md`、`content-research.md`（内部链接 bb-browser）、`research-workflow.md`（内部链接 bb-browser）全部从 `tools/<name>.md`（含 `../tools/` 位置相对形式）更新为带子文件夹的正确路径。
+- **目录树同步**：root README 目录树 + `tools/README.md` 物理目录说明，体现三分结构。
+- 验证：真实磁盘 grep 确认旧式 `tools/<name>.md` 引用 0 处残留；git 显示 5 文件 rename + 10 引用文件修正。
+- V0.4 全部条目（#27–#32）至此撰写并归档完毕。
