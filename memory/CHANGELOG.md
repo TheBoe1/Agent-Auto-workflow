@@ -45,3 +45,31 @@
 - **门禁③记忆防重复门禁**：选题决策新增「角度在 angles/ 已高频使用 → 换未用/空白角度」。
 - 更新 SKILL.md（四层架构 + Content Memory 段）、README.md（Content Memory 说明 + 目录结构 + 路线图 V0.3）、
   `workflows/content-pipeline.md`（状态机补读 Memory 起点与 Phase 7、门禁③、Memory 读写小节）。
+
+## 2026-08-27（架构固化 + Skill 化 · V0.4-prep，提交 `9817a58`）
+
+- **`content-research` 整合层定位写死**：明确它是 Facade / Adapter（非新增能力），只把 bb-browser + research-workflow 收敛为稳定业务接口。
+  - `tools/content-research.md`：加 YAML 元信息头（`type: integration` / `role: research-facade` / `new_capability: false` / `primary_agent: competitor-scout`），首行澄清「不提供独立的新检索能力」。
+  - `tools/README.md`：工具清单改为三层分类表（基础工具 / 基础方法 / **整合层** / **业务工具**）+ 分层依赖图，标注整合层非新增能力。
+  - `README.md`（根）：四层架构升级（Orchestration 含 Workflow；Tools 分 基础/整合/业务）+ 工具表 + 路线图 V0.4。
+  - `agents/team-lead.md`：架构图改为四块（Orchestration / Agents / Tools[3 层] / Memory[6 类]）+ Tool Registry 三层重排 + 升格 **MCN Orchestrator**。
+- **Memory 写入协议 + 候选记忆层**（`memory/README.md`）：新增 Write Protocol（候选→冲突检查→APPEND/MERGE/UPDATE/REJECT→写→CHANGELOG）与 `memory-candidates/` 候选层概念，杜绝 team-lead 凭感觉写 Memory。
+- 业务调用链定稿：competitor-scout → engagement-analyzer → viral-copywriter → humanize-writing → final content。
+
+## 2026-08-27（Registry + Agent Contract + content_fingerprint + Cron · V0.4，提交 `98b810a`）
+
+- **Registry 索引（#27）**：新增 `registry/` 四表，team-lead 改为「引用索引」而非内嵌相对路径，便于自动化加载。
+  - `registry/agents.md`：6 成员索引（触发条件 + 调度铁律）。
+  - `registry/tools.md`：工具三层索引 + 依赖图，明确标注 content-research = 封装壳（非新增能力）。
+  - `registry/memory.md`：六大记忆类索引 + 写入协议摘要。
+  - `registry/workflows.md`：工作流索引 + 业务调用链图。
+  - 同步 `team-lead.md` 二/三/四节、`README.md` 目录树新增 `registry/`。
+- **Agent Contract 标准化（#29）**：5 个执行 Agent 各加统一契约段（Input required/optional / Tools / Memory READ / Output must_contain / Gate / Failure），消除 Agent 互相猜。
+- **content_fingerprint 七维防重（#30）**：
+  - `angle-memory.md` 新增七维指纹（topic / angle / narrative / story / hook / structure / expression）+ 冲突规则。
+  - `competitor-scout.md` 查重判定改「七维全同 → 拒绝」优先，输出 JSON 加 `content_fingerprint`。
+  - `content-pipeline.md` Phase1 改 similarity + fingerprint 双轴判定。
+- **业务调用链 + Cron 协议（#31）**：
+  - `team-lead.md` 新增「十二、业务调用链」与「十三、定时任务（Cron）调度规则」（三阶段演进 + 调度协议 + 门禁不可绕过约束）。
+  - `registry/workflows.md` 补调用链图。
+- 待做：**#32 tools/ 子文件夹重组织**（`research/` `engagement/` `writing/` 三分）——因改 20+ 相对路径，按铁律待用户确认后再做。
