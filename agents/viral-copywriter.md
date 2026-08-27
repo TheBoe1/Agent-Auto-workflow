@@ -54,6 +54,14 @@ maxTurns: 80
 - 标题与正文须与查重通过的选题保持一致，不得私自换方向。
 - 重构必须落到结构 / 视角 / 人群，禁止只换标题。
 
+## Agent Contract（标准化契约）
+- **Input**：required：`03_brief.md`、`02_stories.md`；optional：`01_scout.md`（查重结论）
+- **Tools**：humanize-writing（★★★★★，收尾调用）
+- **Memory READ**：`../memory/account/style.md`、`../memory/stories/story-index.md`、`../memory/angles/angle-memory.md`
+- **Output**：`runs/{run_id}/04_copy.md`，must_contain：20 标题（分类）/ 正文（引用 ST-00X）/ 5–8 标签 / 1 互动提问 / `content_fingerprint`
+- **Gate（进入前置）**：无可用故事条目 → 退回主理人，禁止凭空编
+- **Failure**：素材缺失 → `status: BLOCKED`，退回补采
+
 ## Memory 访问规则
 - **READ**：`../memory/account/style.md`（对齐账号语言 DNA，去 AI 味）、`../memory/stories/story-index.md`（素材资产）、`../memory/angles/angle-memory.md`（确认本篇角度未被过度使用）。
 - **WRITE**：无。正文写 `runs/{run_id}/04_copy.md`；记忆更新由 team-lead 在 Phase 7 执行。

@@ -72,11 +72,14 @@ runs/{run_id}/
 **先读 Memory**：team-lead + 猎同频先读 `../memory/topics/`、`../memory/angles/angle-memory.md`（防主题/角度重复）、`../memory/stories/story-index.md`（可复用素材）。
 用 content-research 检索同类型内容与对标账号，输出趋势、对标、用户画像、竞争度，并做标题/结构/关键词/语义四维查重。
 
-查重判定：
-- `similarity >= 0.90` → HIGH，拒绝重做
-- `0.70 <= similarity < 0.90` → MEDIUM，转重构
-- `similarity < 0.70` → 通过
-- 检索失败 → 风险确认节点，禁止自动生产
+查重判定（`similarity` + `content_fingerprint` 双轴）：
+- 七维 `content_fingerprint` 全同 → 直接拒绝（等同 HIGH）。
+- `similarity >= 0.90` → HIGH，拒绝重做。
+- `0.70 <= similarity < 0.90` → MEDIUM，转重构（换可调动维度：hook / structure / expression，或叠加新切口）。
+- `similarity < 0.70` 且指纹可区分 → 通过。
+- 检索失败 → 风险确认节点，禁止自动生产。
+
+> 七维指纹定义与冲突规则见 `../memory/angles/angle-memory.md` 的 content_fingerprint 段。
 
 ### Phase 2：真实素材采集（story-collector）
 采集有来源、可核实的真实故事，结构化沉淀为故事库（ST-00X 条目），脱敏并标注授权与可信度。

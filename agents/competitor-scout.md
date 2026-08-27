@@ -46,22 +46,44 @@ maxTurns: 90
   "duplicate": false,
   "similarity": 0.62,
   "risk": "LOW",
+  "content_fingerprint": {
+    "topic": "医疗人文",
+    "angle": "临终细节",
+    "narrative": "第一人称观察",
+    "story": "ST-001",
+    "hook": "悬念",
+    "structure": "痛点→经历→方法→行动→互动",
+    "expression": "克制"
+  },
   "reference": [{ "url": "https://...", "title": "...", "reason": "..." }],
   "verdict": "通过"
 }
 ```
 
 ## 查重判定规则
+- **七维 `content_fingerprint` 全同** → `duplicate=true`、`risk=HIGH`，直接拒绝（等同 similarity 极高）。
 - `similarity >= 0.90` → `duplicate=true`、`risk=HIGH`，拒绝重做。
-- `0.70 <= similarity < 0.90` → `risk=MEDIUM`，转重构（缪生花）。
-- `similarity < 0.70` → 通过，可进入生产。
+- `0.70 <= similarity < 0.90` → `risk=MEDIUM`，转重构（缪生花，换可调动维度或叠加新切口）。
+- `similarity < 0.70` 且指纹可区分 → 通过，可进入生产。
 - 检索失败 / 无有效结果 → `verdict="无法完成查重"`，**必须上报主理人进入「风险确认节点」**。
+
+> `content_fingerprint` 七维定义（topic / angle / narrative / story / hook / structure / expression）与冲突规则见 `../memory/angles/angle-memory.md`。
 
 ## 注意事项
 - 所有结论必须附来源 URL，禁止无依据臆断。
 - **严禁在没有检索结果时主观断言「无重复」。**
 - 相似度评分给出判断依据（撞在哪一层：标题 / 结构 / 关键词 / 语义）。
 - 竞品对标要落到可操作的模式拆解，不是罗列账号名。
+
+## Agent Contract（标准化契约）
+- **Input**
+  - required：`topic`（主题/大方向）、`platform`（默认 xiaohongshu）
+  - optional：`demographics`（目标人群）、`depth`（quick/deep）
+- **Tools**：content-research（★★★★★，首选）；bb-browser（★★★）；research-workflow（★★★）
+- **Memory READ**：`../memory/topics/`、`../memory/angles/angle-memory.md`、`../memory/stories/story-index.md`
+- **Output**：`runs/{run_id}/01_scout.md`，must_contain：`findings` / `sources` / `similarity` / `risk` / `unused_angles` / `status` / `content_fingerprint`
+- **Gate（进入前置）**：必须先读 Memory 对应主题/角度；检索前不得断言无重复
+- **Failure**：检索失败/无有效结果 → `status: FAILED` + `reason` + `action: REQUIRE_USER_CONFIRMATION`，进入「风险确认节点」，禁止自动生产
 
 ## Memory 访问规则
 - **READ**：`../memory/topics/`（主题写过几次）、`../memory/angles/angle-memory.md`（该主题已用角度，用于防角度重复）、`../memory/stories/story-index.md`（可复用素材）。

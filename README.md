@@ -75,6 +75,11 @@ MCN-Agent-Studio/
 ├── .gitignore                   # 忽略 .env / cookies / node_modules / cache / runs
 ├── .env.example                 # 配置模板（无真实值）
 ├── third-party-licenses.md      # 各上游 license 核查状态
+├── registry/                    # 索引（单一事实来源，team-lead 引用而非内嵌路径）
+│   ├── agents.md                #   Agent 索引表
+│   ├── tools.md                #   工具索引（基础/整合/业务三层）
+│   ├── memory.md               #   记忆索引（六大类）
+│   └── workflows.md            #   工作流索引 + 业务调用链
 ├── agents/                      # 6 个专家角色定义（Markdown）
 │   ├── team-lead.md             #   主理人（含 SOP 编排 + 工具清单 + 中间文件流转）
 │   ├── competitor-scout.md      #   猎同频·对标检索师（高权重：content-research）
@@ -231,7 +236,8 @@ Phase 6  主理人汇编 → 输出「可直接发布」的内容包
 - [x] V0.2 集成精简为 6 名专家 + 真实素材采集 + 中间文件流转 + 工具层（bb-browser + research-workflow）
 - [x] V0.2.1 工具工程化：3 个应用工具（content-research / humanize-writing / engagement-analyzer）+ 统一 Tool Schema + Demo 零配置 + 安全/license 基线
 - [x] V0.3 Content Memory 六大记忆类（account/content/topics/angles/stories/performance）+ team-lead 升格为 MCN 操作系统（注册表 + Mermaid 主流程 + 5 条调度铁律 + 记忆唯一管理者 + Phase 7 记忆更新协议）
-- [ ] V0.4 架构固化与 Skill 化：content-research 定位为整合层（非新增能力）；Tools 三层（基础/整合/业务）；team-lead 升格 MCN Orchestrator；Agent Contract 标准化；Memory 写入协议 + 候选记忆层；content_fingerprint 防重升级；Registry 索引；最后接 Cron
+- [x] V0.4 架构固化：content-research 整合层定位写死（commit 9817a58）；Tools 三层；team-lead 升格 MCN Orchestrator；Memory 写入协议 + 候选记忆层
+- [x] V0.4 Agent Contract 标准化（6 agent 统一 Input/Tools/Memory READ/Output/Gate/Failure）；Registry 索引（agents/tools/memory/workflows 四表）；content_fingerprint 七维防重升级；业务调用链 + Cron 调度协议（本次 commit）
 - [ ] V0.5 自动发布、数据采集、增长优化闭环（先验证 10–20 轮选题/角度不重复，再接 Cron→团队→人工审核，最后才自动发布）
 
 ## 技术落地建议

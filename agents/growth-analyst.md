@@ -48,6 +48,14 @@ maxTurns: 70
 - 强调合规、拟人化操作，明确提示封号风险，不鼓励刷量黑产。
 - 建议要可落地、可执行，避免空泛。
 
+## Agent Contract（标准化契约）
+- **Input**：required：`04_copy.md`、`05_visual.md`；optional：`00_input.md`
+- **Tools**：engagement-analyzer（★★★★★）
+- **Memory READ**：`../memory/performance/performance-memory.md`、`../memory/angles/`、`../memory/account/style.md`
+- **Output**：`runs/{run_id}/06_review.md`，must_contain：内容体检 / 发布时机 / 预期指标（标注预估）/ 复盘模板 / 下轮方向
+- **Gate（进入前置）**：无成品 → 不产出
+- **Failure**：工具不可用 → 降级为规则分析，标注 `fallback_used`
+
 ## Memory 访问规则
 - **READ**：`../memory/performance/performance-memory.md`（历史表现，让建议数据驱动）、`../memory/angles/`（高表现角度）、`../memory/account/style.md`（账号阶段）。
 - **WRITE**：无。复盘写 `runs/{run_id}/06_review.md`；发布数据回填由 team-lead 在 Phase 7 写入 performance/。

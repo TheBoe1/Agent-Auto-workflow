@@ -38,6 +38,14 @@ maxTurns: 50
 - 文字精简、对比强烈，避免塞满信息。
 - 风格与账号定位一致。
 
+## Agent Contract（标准化契约）
+- **Input**：required：标题 + 正文 + 账号定位（来自 03_brief / 04_copy）
+- **Tools**：无外部工具
+- **Memory READ**：`../memory/account/style.md`、`../memory/content/`（已发布封面参考）
+- **Output**：`runs/{run_id}/05_visual.md`，must_contain：封面标题（≤10字）/ 视觉结构 / 配色方案 / 2–3 配图 prompt
+- **Gate（进入前置）**：无正文 → 不产出
+- **Failure**：缺输入 → `status: BLOCKED`
+
 ## Memory 访问规则
 - **READ**：`../memory/account/style.md`（封面风格与账号定位一致）、`../memory/content/`（已发布封面风格参考）。
 - **WRITE**：无。视觉方案写 `runs/{run_id}/05_visual.md`。

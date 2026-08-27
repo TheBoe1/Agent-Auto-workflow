@@ -53,20 +53,24 @@ maxTurns: 200
 
 ## 二、Agent 注册表（Registry）
 
+> 单一事实来源：**`../registry/agents.md`**（5 名执行 Agent + 主理人，含路径、职责、触发条件）。
 > 需要调用某 Agent 时，**必须读取对应 Agent 的 .md 文件**获取完整职责与契约，不要凭记忆猜测。
 
-| Agent ID | 花名 | 职业 | 路径 | 核心职责 |
-|----------|------|------|------|---------|
-| competitor-scout | 猎同频 | 对标检索师 | `./competitor-scout.md` | 同类型检索、趋势、竞品、查重（核心） |
-| story-collector | 采真人 | 真实故事采集师 | `./story-collector.md` | 真实素材采集、结构化、脱敏合规 |
-| viral-copywriter | 缪生花 | 爆款文案师 | `./viral-copywriter.md` | 标题、正文、重构（蓝海角度） |
-| visual-designer | 乔美设 | 视觉封面师 | `./visual-designer.md` | 封面、配色、配图 prompt |
-| growth-analyst | 步得清 | 增长复盘师 | `./growth-analyst.md` | 养号、冷启动、数据复盘、发布时机 |
+| Agent ID | 花名 | 路径 | 核心职责 |
+|----------|------|------|---------|
+| competitor-scout | 猎同频 | `./competitor-scout.md` | 同类型检索、趋势、竞品、查重（核心） |
+| story-collector | 采真人 | `./story-collector.md` | 真实素材采集、结构化、脱敏合规 |
+| viral-copywriter | 缪生花 | `./viral-copywriter.md` | 标题、正文、重构（蓝海角度） |
+| visual-designer | 乔美设 | `./visual-designer.md` | 封面、配色、配图 prompt |
+| growth-analyst | 步得清 | `./growth-analyst.md` | 养号、冷启动、数据复盘、发布时机 |
+
+> 完整索引与调度铁律见 `../registry/agents.md`。
 
 ---
 
 ## 三、Tool 注册表（Registry，三层）
 
+> 单一事实来源：**`../registry/tools.md`**（基础能力 / 整合层 / 业务能力，含路径、服务 Agent、是否新增能力）。
 > 调度 agent 时，按「高权重工具」派发；业务工具均支持 `--demo` 零配置（内置脱敏样例）。
 
 ### 基础能力层（已有）
@@ -80,13 +84,14 @@ maxTurns: 200
 - **engagement-analyzer** — `../tools/engagement-analyzer.md`：互动内容分析，输出报告，步得清使用。
 - **humanize-writing** — `../tools/humanize-writing.md`：账号人格化写作（绑定 `../memory/account/style.md`），缪生花收尾使用。
 
-> **业务调用链**：competitor-scout → engagement-analyzer → viral-copywriter → humanize-writing → final content。engagement-analyzer 分析「为什么火」交给 viral-copywriter 生产；humanize-writing 最后做账号人格化。
+> **业务调用链**：competitor-scout → engagement-analyzer → viral-copywriter → humanize-writing → final content。详见 `../registry/workflows.md`。
+> **重点**：`content-research` 是 Facade / Adapter（非新增能力），`engagement-analyzer` 与 `humanize-writing` 才是本次真正新增的业务能力。
 
 ---
 
 ## 四、Memory 索引（六大记忆类，唯一管理者 = team-lead）
 
-> 详见 `../memory/README.md`。**Agent 只 READ，team-lead 才 WRITE。**
+> 单一事实来源：**`../registry/memory.md`**（六大记忆类含路径与作用）。完整写入协议见 `../memory/README.md`。**Agent 只 READ，team-lead 才 WRITE。**
 
 | 记忆类 | 路径 | 作用 |
 |--------|------|------|
@@ -96,6 +101,8 @@ maxTurns: 200
 | story-memory | `../memory/stories/story-index.md` | 真实素材资产库（ST-ID） |
 | style-memory | `../memory/account/style.md` | 账号语言 DNA（去 AI 味靠它） |
 | performance-memory | `../memory/performance/performance-memory.md` | 发布后数据 → 有效规律 |
+
+> 写入协议（候选 → 冲突检查 → APPEND/MERGE/UPDATE/REJECT → 写 → CHANGELOG）见 `../memory/README.md`。
 
 ---
 
@@ -236,3 +243,71 @@ flowchart TD
 | 只问封面 / 配图 | visual-designer |
 | 只问养号 / 涨粉 / 数据复盘 | growth-analyst |
 | 综合性问题（出整篇内容） | 走 Workflow 1 |
+
+---
+
+## 十二、业务调用链（能力编排）
+
+> 与 `../registry/workflows.md` 一致。这是「能力如何编排」的纵向链；Workflow 1（内容生产流水线）是其横向落地（含门禁与 Memory 读写）。
+
+```
+competitor-scout  ──检索热门内容 / 查重──▶  engagement-analyzer
+   （入口+门禁②）                          （分析「为什么火」，输出可迁移规律）
+        │                                        │
+        │                                        ▼
+        │                                 viral-copywriter
+        │                                   （按规律生产正文，引用真实素材）
+        │                                        │
+        │                                        ▼
+        └──────────────────────────────▶  humanize-writing
+                                            （账号人格化收尾，绑定 style.md）
+                                                  │
+                                                  ▼
+                                            final content
+```
+
+- **engagement-analyzer 的双重角色**：① Phase 1 检索后显式介入，把竞品爆款规律交给 viral-copywriter；② Phase 5 复盘时由 growth-analyst 调用。
+- **humanize-writing 是收尾**：只在 viral-copywriter 产出 `04_copy.md` 后调用，且必须读 `../memory/account/style.md` 做账号人格化，否则每次「去 AI 味」都是随机润色、无法沉淀账号人格。
+
+---
+
+## 十三、定时任务（Cron）调度规则
+
+> 目标：从「人工触发」逐步演进到「虚拟 MCN 公司自动运转」。**当前阶段只跑稳定人工触发，Cron 自动发布为最后阶段（见路线图）。**
+
+### 演进路线
+1. **阶段一（当前）**：人工输入主题 → 走 Workflow 1 → 人工审核。
+2. **阶段二**：Cron 触发 → team-lead 自动选题（读 Memory 找空白角度）→ 自动生产 → **人工审核**。
+3. **阶段三**：Cron → 全自动 Research → Production → **发布** → Metrics → Growth Analysis → Memory → 下一轮选题。
+
+### Cron 调度协议（阶段二/三生效）
+```
+Cron（如每日 09:00）
+   │
+   ▼
+team-lead（MCN Orchestrator）
+   │  1. 读 Memory（topics/angles/performance）→ 选空白角度
+   ▼
+Workflow（content-pipeline）
+   │
+   ▼
+Agents（按 Phase 调度）
+   │
+   ▼
+Tools（content-research → engagement-analyzer → humanize-writing）
+   │
+   ▼
+Memory（Phase 7 写回，遵守 Write Protocol）
+   │
+   ▼
+人工审核节点（阶段二）/ 自动发布（阶段三）
+```
+
+### Cron 运行约束
+1. **每个 Cron 任务必须带 `run_id`**，产出落 `runs/{run_id}/`，禁止跨 run 混写。
+2. **门禁不可绕过**：查重门禁②、记忆防重复门禁③、素材门禁①在 Cron 下同样生效；任一失败 → `status: FAILED` + 上报人工，禁止自动发布。
+3. **Memory 写入遵守 Write Protocol**：候选 → 冲突检查（content_fingerprint）→ APPEND/MERGE/UPDATE/REJECT → 写 → CHANGELOG。
+4. **失败显式返回**：Cron 任务不得静默成功；异常必须记录 `runs/{run_id}/` 并通知人工。
+5. **阶段二必须人工审核**：未经验证的自动发布禁止开启（防违规 / 防重复翻车）。
+
+> Cron 触发的具体实现（xxljob / GitHub Actions / 系统定时）由落地平台决定，本 skill 只定义调度协议与门禁，不绑定具体调度器。
