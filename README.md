@@ -92,11 +92,14 @@ MCN-Agent-Studio/
 │   └── account-growth.md        #   养号增长流程（三阶段）
 ├── tools/                       # 工具文件夹（agent 可调用）
 │   ├── README.md                #   工具索引 + 协作关系 + 零/最小配置总览
-│   ├── content-research.md      #   统一检索入口（封装 bb-browser + research-workflow）
-│   ├── humanize-writing.md      #   文本拟人化（LLM 抽象层）
-│   ├── engagement-analyzer.md   #   互动内容分析（输出报告）
-│   ├── bb-browser.md            #   底层搜索工具（36 平台 103 命令）
-│   └── research-workflow.md     #   底层检索方法论（四阶段）
+│   ├── research/                #   检索能力层（基础 + 整合）
+│   │   ├── bb-browser.md        #     底层搜索工具（36 平台 103 命令）
+│   │   ├── research-workflow.md #     底层检索方法论（四阶段）
+│   │   └── content-research.md  #     统一检索入口（Facade，封装上两者，非新增能力）
+│   ├── engagement/              #   互动分析层（业务新增）
+│   │   └── engagement-analyzer.md #   互动内容分析（输出报告）
+│   └── writing/                 #   人格化写作层（业务新增）
+│       └── humanize-writing.md  #   账号人格化写作
 ├── samples/                     # 内置脱敏样例（--demo 零配置运行）
 │   ├── content-research/        #   对标检索报告样例
 │   ├── engagement-analyzer/     #   脱敏 posts.json + 报告样例

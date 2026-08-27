@@ -74,15 +74,15 @@ maxTurns: 200
 > 调度 agent 时，按「高权重工具」派发；业务工具均支持 `--demo` 零配置（内置脱敏样例）。
 
 ### 基础能力层（已有）
-- **bb-browser** — `../tools/bb-browser.md`：真实浏览器搜索，content-research 依赖。
-- **research-workflow** — `../tools/research-workflow.md`：结构化研究方法论，content-research 依赖。
+- **bb-browser** — `../tools/research/bb-browser.md`：真实浏览器搜索，content-research 依赖。
+- **research-workflow** — `../tools/research/research-workflow.md`：结构化研究方法论，content-research 依赖。
 
 ### 能力整合层（已有 / 封装，非新增能力）
-- **content-research** — `../tools/content-research.md`：统一检索入口（**Facade**，封装 bb-browser + research-workflow）。**不提供独立的新检索能力**，仅向上层暴露单一 Tool Schema；底层工具替换时上层 agent 无需改动。猎同频首选。
+- **content-research** — `../tools/research/content-research.md`：统一检索入口（**Facade**，封装 bb-browser + research-workflow）。**不提供独立的新检索能力**，仅向上层暴露单一 Tool Schema；底层工具替换时上层 agent 无需改动。猎同频首选。
 
 ### 业务能力层（本次新增）
-- **engagement-analyzer** — `../tools/engagement-analyzer.md`：互动内容分析，输出报告，步得清使用。
-- **humanize-writing** — `../tools/humanize-writing.md`：账号人格化写作（绑定 `../memory/account/style.md`），缪生花收尾使用。
+- **engagement-analyzer** — `../tools/engagement/engagement-analyzer.md`：互动内容分析，输出报告，步得清使用。
+- **humanize-writing** — `../tools/writing/humanize-writing.md`：账号人格化写作（绑定 `../memory/account/style.md`），缪生花收尾使用。
 
 > **业务调用链**：competitor-scout → engagement-analyzer → viral-copywriter → humanize-writing → final content。详见 `../registry/workflows.md`。
 > **重点**：`content-research` 是 Facade / Adapter（非新增能力），`engagement-analyzer` 与 `humanize-writing` 才是本次真正新增的业务能力。

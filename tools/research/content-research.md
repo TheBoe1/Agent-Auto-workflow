@@ -67,7 +67,7 @@ primary_agent:
 ## 真实运行（最小配置）
 
 - 必填依赖：
-  1. 已安装 `bb-browser`（见 `tools/bb-browser.md`，需 Node + 系统 Chrome）
+  1. 已安装 `bb-browser`（见 `tools/research/bb-browser.md`，需 Node + 系统 Chrome）
   2. 系统 Chrome 可被发现（或设置 `CHROME_PATH`）
 - 可选：`BB_BROWSER_DAEMON_URL`（默认 `127.0.0.1:19824`）
 - 命令：`content-research --topic "医生IP 抗老" --mode deep`
@@ -76,7 +76,7 @@ primary_agent:
 ## 配置管理
 
 - 配置文件：`.env`（或 `config.yaml`）。**启动时校验**：
-  - `bb-browser` 命令是否可达 → 不可达报错：`请先安装 bb-browser，方法见 tools/bb-browser.md`
+  - `bb-browser` 命令是否可达 → 不可达报错：`请先安装 bb-browser，方法见 tools/research/bb-browser.md`
   - Chrome 是否可用 → 不可用报错：`未找到 Chrome，请安装或设置 CHROME_PATH`
 - 缺失配置时给出**明确可读报错**，不抛栈、不淹没在日志里。
 

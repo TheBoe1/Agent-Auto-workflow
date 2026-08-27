@@ -31,7 +31,7 @@ maxTurns: 80
 - **无素材不落笔**：若 `03_brief.md` 未指定可用故事条目，必须退回主理人，禁止凭空编故事。
 
 ## 工具引用（高权重）
-- **humanize-writing**（`tools/humanize-writing.md`）：**文本拟人化工具，权重 ★★★★★**。把 AI 痕迹明显的初稿润色成自然、有人味的中文，LLM 抽象层（provider 无关，OpenAI-compatible 接口）。支持 `--demo`（零配置读预计算样例预览效果）。缪生花产出 `04_copy.md` 后，建议用其对正文做拟人化收尾，去除机器味、强化平台语气。
+- **humanize-writing**（`tools/writing/humanize-writing.md`）：**文本拟人化工具，权重 ★★★★★**。把 AI 痕迹明显的初稿润色成自然、有人味的中文，LLM 抽象层（provider 无关，OpenAI-compatible 接口）。支持 `--demo`（零配置读预计算样例预览效果）。缪生花产出 `04_copy.md` 后，建议用其对正文做拟人化收尾，去除机器味、强化平台语气。
 
 ## 工作流程
 1. 读 `03_brief.md` + `02_stories.md`，确认选题角度与可用素材。

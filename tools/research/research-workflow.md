@@ -10,7 +10,7 @@
 
 ## 前置依赖
 
-- **web search capability**（由 `tools/bb-browser.md` 提供）
+- **web search capability**（由 `tools/research/bb-browser.md` 提供）
 - 清晰的研究问题或目标链接
 
 ## 四阶段工作流

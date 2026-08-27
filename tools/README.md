@@ -5,6 +5,8 @@
 
 ## 工具分层（3 层）
 
+> **物理目录**：`tools/research/`（bb-browser、research-workflow、content-research）、`tools/engagement/`（engagement-analyzer）、`tools/writing/`（humanize-writing）。
+
 > **核心区分**：`content-research` 不是新能力，是**整合层（Facade / Adapter）**——只把底层 `bb-browser` + `research-workflow` 收敛成稳定业务接口；`humanize-writing` 与 `engagement-analyzer` 才是本次**新增业务能力**。
 
 | 层级 | 工具 | 状态 | 作用 |

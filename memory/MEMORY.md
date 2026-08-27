@@ -34,15 +34,15 @@
 **应用工具（agent 直接调用，均支持 `--demo` 零配置）**
 | 工具 | 位置 | 能力 | 高权重 agent |
 |---|---|---|---|
-| content-research | `tools/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow） | 猎同频 |
-| humanize-writing | `tools/humanize-writing.md` | 文本拟人化，LLM 抽象层（provider 无关） | 缪生花 |
-| engagement-analyzer | `tools/engagement-analyzer.md` | 互动内容分析，输出报告 | 步得清 |
+| content-research | `tools/research/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow） | 猎同频 |
+| humanize-writing | `tools/writing/humanize-writing.md` | 文本拟人化，LLM 抽象层（provider 无关） | 缪生花 |
+| engagement-analyzer | `tools/engagement/engagement-analyzer.md` | 互动内容分析，输出报告 | 步得清 |
 
 **底层工具（被应用工具依赖）**
 | 工具 | 位置 | 能力 |
 |---|---|---|
-| bb-browser | `tools/bb-browser.md` | 36 平台 103 命令，真实浏览器登录态搜索 |
-| research-workflow | `tools/research-workflow.md` | 结构化检索分析（Planning→Execution→Analysis→Synthesis） |
+| bb-browser | `tools/research/bb-browser.md` | 36 平台 103 命令，真实浏览器登录态搜索 |
+| research-workflow | `tools/research/research-workflow.md` | 结构化检索分析（Planning→Execution→Analysis→Synthesis） |
 
 > 零配置原则：Demo 用 `samples/` 内置脱敏数据，无需浏览器/key；真实场景最小配置填 cookie / LLM key（见 `.env.example`）。
 

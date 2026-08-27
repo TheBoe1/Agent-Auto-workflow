@@ -17,9 +17,9 @@
 ## 2026-08-27（工具工程化 v0.2.1）
 
 - 新增 3 个应用工具（agent 直接调用，均支持 `--demo` 零配置）：
-  - `tools/content-research.md`：统一检索入口，封装 bb-browser + research-workflow（猎同频）
-  - `tools/humanize-writing.md`：文本拟人化，LLM 抽象层 provider 无关（缪生花）
-  - `tools/engagement-analyzer.md`：互动内容分析，输出报告（步得清）
+  - `tools/research/content-research.md`：统一检索入口，封装 bb-browser + research-workflow（猎同频）
+  - `tools/writing/humanize-writing.md`：文本拟人化，LLM 抽象层 provider 无关（缪生花）
+  - `tools/engagement/engagement-analyzer.md`：互动内容分析，输出报告（步得清）
 - 每个工具文件含：统一 Tool Schema（输入输出契约）+ 零配置 Demo + 真实最小配置 + 配置校验/降级/缓存/License/安全/测试。
 - 新增 `samples/`（4 文件，脱敏内置样例，保证 clone 即跑）。
 - 新增 `.gitignore`、`.env.example`、`LICENSE`（MIT, TheBoe1）、`third-party-licenses.md`。
@@ -49,7 +49,7 @@
 ## 2026-08-27（架构固化 + Skill 化 · V0.4-prep，提交 `9817a58`）
 
 - **`content-research` 整合层定位写死**：明确它是 Facade / Adapter（非新增能力），只把 bb-browser + research-workflow 收敛为稳定业务接口。
-  - `tools/content-research.md`：加 YAML 元信息头（`type: integration` / `role: research-facade` / `new_capability: false` / `primary_agent: competitor-scout`），首行澄清「不提供独立的新检索能力」。
+  - `tools/research/content-research.md`：加 YAML 元信息头（`type: integration` / `role: research-facade` / `new_capability: false` / `primary_agent: competitor-scout`），首行澄清「不提供独立的新检索能力」。
   - `tools/README.md`：工具清单改为三层分类表（基础工具 / 基础方法 / **整合层** / **业务工具**）+ 分层依赖图，标注整合层非新增能力。
   - `README.md`（根）：四层架构升级（Orchestration 含 Workflow；Tools 分 基础/整合/业务）+ 工具表 + 路线图 V0.4。
   - `agents/team-lead.md`：架构图改为四块（Orchestration / Agents / Tools[3 层] / Memory[6 类]）+ Tool Registry 三层重排 + 升格 **MCN Orchestrator**。
