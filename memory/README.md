@@ -41,4 +41,57 @@
 - `memory/`：跨会话的**长期资产**。`02_stories.md`（本 run 用过的故事）→ promote 进 `stories/story-index.md`（全量资产）；
   `final_bundle` 发布后 → promote 进 `content/published/`；发布数据 → promote 进 `performance/`。
 
+## Memory 写入协议（Write Protocol）
+
+Agent 的产出只落盘 `runs/{run_id}/`，**不得直接写 `memory/`**。一轮结束后，team-lead 按以下协议把候选记忆提升（promote）进长期 Memory：
+
+```
+Agent 产出（runs/）
+   ↓ 提交候选记忆（含 evidence + confidence）
+team-lead 验证
+   ↓
+Memory Conflict Check（查重：该主题/角度/故事是否已记录）
+   ↓
+判定：APPEND / MERGE / UPDATE / REJECT
+   ↓
+写入 Memory（append / version，禁止覆盖历史）
+   ↓
+记录 CHANGELOG（谁、何时、为何）
+```
+
+- **APPEND**：全新条目，分配 ID（CONTENT-ID / ST-ID）。
+- **MERGE**：与既有条目互补，合并字段。
+- **UPDATE**：既有条目新增表现/使用计数。
+- **REJECT**：重复或低置信度（附理由）。
+
+> 即使 team-lead 自身，也**不得凭感觉写 Memory**——每一条写入都必须经过冲突检查与 CHANGELOG 留痕。
+
+## 候选记忆层（memory-candidates）
+
+为避免「执行中间文件」直接污染长期资产，引入候选层：
+
+```
+runs/{run_id}/          # 单次执行中间文件（用完即归档，gitignore）
+   ↓ 甄有料审核
+memory-candidates/      # 候选记忆（带 candidate_id / run_id / evidence / action）
+   ↓ APPEND / MERGE / UPDATE / REJECT
+memory/                 # 长期资产（六大记忆类）
+```
+
+候选记忆示例：
+
+```yaml
+candidate_id: MC-20260827-001
+run_id: 20260827-001
+type: angle
+candidate:
+  topic: 医疗人文
+  angle: 临终前的细微动作
+evidence:
+  source: final_bundle
+  confidence: high
+action:
+  type: APPEND
+```
+
 > 详见 `agents/team-lead.md` 的「七、阶段说明 → Phase 7 记忆更新协议」。

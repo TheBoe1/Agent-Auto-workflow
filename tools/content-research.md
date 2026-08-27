@@ -1,4 +1,19 @@
-# content-research · 内容检索分析工具
+---
+type: integration
+name: content-research
+role: research-facade
+status: stable
+capability_origin:
+  - bb-browser
+  - research-workflow
+new_capability: false
+primary_agent:
+  - competitor-scout
+---
+
+# content-research · 内容研究编排入口（整合层 / Facade）
+
+> **这是底层检索能力的业务封装层，不提供独立的新检索能力。** 它只把 `bb-browser`（真实浏览器搜索）+ `research-workflow`（结构化研究方法论）收敛成一个稳定业务接口供猎同频调用；底层工具替换（如 Firecrawl / Exa）时，上层 agent 无需改动。
 
 > 猎同频（对标检索师）的统一检索入口。封装 `bb-browser`（真实浏览器搜索）+ `research-workflow`（结构化研究方法论），对外暴露**单一 Tool Schema**。
 > 定位：把"零散的搜索命令"收敛成"一个 agent 可调用的研究工具"，让上层不必关心底层适配器差异。

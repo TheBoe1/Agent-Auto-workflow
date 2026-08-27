@@ -48,7 +48,7 @@
 
 ## Content Memory（长期内容资产系统）
 
-系统由四层构成：**Agents**（5 名专业成员）+ **Tools**（可被调用的能力）+ **Memory**（长期内容资产）+ **team-lead**（编排者 / 规则制定者 / **记忆唯一管理者** / 最终审核者，即 MCN Operating System）。
+系统由四层构成：**Orchestration**（编排层：team-lead + Workflow，负责任务调度与 SOP）+ **Agents**（5 名专业执行成员）+ **Tools**（能力层，分基础 / 整合 / 业务三层）+ **Memory**（长期内容资产，team-lead 为**记忆唯一管理者**）。其中 Tools 的三层定位见下方「工具与检索能力」；Workflow 归入 Orchestration 而非与 Agents/Tools/Memory 并列。
 
 Memory 不是「聊天记忆」，而是团队的**内容资产库**——账号过去说过什么、用过什么角度、讲过什么故事、采用过什么表达、什么内容真正有效。它解决的是反复踩同一个重复坑的问题（今天写「用了 30 天 AI」、明天又写一遍）。
 
@@ -124,17 +124,27 @@ MCN-Agent-Studio/
 
 ## 工具与检索能力
 
-每个工具文件内含**统一 Tool Schema（输入/输出契约）+ 零配置 Demo + 真实最小配置 + 配置校验/降级/缓存/License/安全/测试**。三个应用工具均支持 `--demo` 零配置运行（用内置脱敏样例），真实场景仅需最小配置。
+每个工具文件内含**统一 Tool Schema（输入/输出契约）+ 零配置 Demo + 真实最小配置 + 配置校验/降级/缓存/License/安全/测试**。两个业务工具（`humanize-writing` / `engagement-analyzer`）均支持 `--demo` 零配置运行（用内置脱敏样例），真实场景仅需最小配置。
 
-| 工具 | 位置 | 能力 | 高权重 agent |
-|------|------|------|-------------|
-| content-research | `tools/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`--demo` 零配置 | 猎同频 |
-| humanize-writing | `tools/humanize-writing.md` | 文本拟人化，LLM 抽象层（provider 无关），`--demo` 零配置 | 缪生花 |
-| engagement-analyzer | `tools/engagement-analyzer.md` | 互动内容分析，输出《互动内容分析报告》，`--demo` 零配置 | 步得清 |
-| bb-browser *底层* | `tools/bb-browser.md` | 36 平台 103 命令，真实浏览器登录态搜索 | 猎同频 |
-| research-workflow *底层* | `tools/research-workflow.md` | 结构化研究四阶段，生成中间文件报告 | 猎同频 |
+| 层级 | 工具 | 状态 | 能力 / 高权重 agent |
+| -------- | --------------------- | ------ | ------- |
+| 基础工具 | `bb-browser` | 已有 | 浏览器检索（36 平台 103 命令） |
+| 基础方法 | `research-workflow` | 已有 | 结构化研究四阶段 |
+| **整合层** | `content-research` | 已有/封装 | 统一研究入口（**Facade，非新增能力**），猎同频 |
+| **业务工具** | `engagement-analyzer` | **新增** | 分析互动机制，输出报告，步得清 |
+| **业务工具** | `humanize-writing` | **新增** | 账号人格化写作（绑定 `memory/account/style.md`），缪生花 |
 
-检索/润色/复盘类 agent 在定义文件中通过「工具引用」小节声明工具的**调用权重**，主理人在 `tools/` 索引中完成调度派发。
+> **层级关系**：`content-research` 是**能力整合层（Facade / Adapter）**——只把底层 `bb-browser` + `research-workflow` 收敛成稳定业务接口，**不提供独立的新检索能力**；真正本次新增的业务能力是 `engagement-analyzer` 与 `humanize-writing`。
+
+**业务调用链（Business Call Chain）：**
+
+```
+competitor-scout ──▶ engagement-analyzer ──▶ viral-copywriter ──▶ humanize-writing ──▶ final content
+```
+
+`engagement-analyzer` 负责「分析为什么火」，结论交给 `viral-copywriter` 生产；`humanize-writing` 在最后做账号人格化收尾（绑定 `account/style.md`），而非随机润色。
+
+检索/分析/润色类 agent 在定义文件中通过「工具引用」小节声明工具的**调用权重**，主理人在 `tools/` 索引中完成调度派发。
 
 ### 零配置与最小配置
 - **Demo 零配置**：`content-research --demo` / `humanize-writing --demo` / `engagement-analyzer --demo` 均读取 `samples/` 内置脱敏数据，无需浏览器、无需 LLM key，clone 即跑。
@@ -221,7 +231,7 @@ Phase 6  主理人汇编 → 输出「可直接发布」的内容包
 - [x] V0.2 集成精简为 6 名专家 + 真实素材采集 + 中间文件流转 + 工具层（bb-browser + research-workflow）
 - [x] V0.2.1 工具工程化：3 个应用工具（content-research / humanize-writing / engagement-analyzer）+ 统一 Tool Schema + Demo 零配置 + 安全/license 基线
 - [x] V0.3 Content Memory 六大记忆类（account/content/topics/angles/stories/performance）+ team-lead 升格为 MCN 操作系统（注册表 + Mermaid 主流程 + 5 条调度铁律 + 记忆唯一管理者 + Phase 7 记忆更新协议）
-- [ ] V0.4 竞品分析、账号画像、爆款拆解自动化
+- [ ] V0.4 架构固化与 Skill 化：content-research 定位为整合层（非新增能力）；Tools 三层（基础/整合/业务）；team-lead 升格 MCN Orchestrator；Agent Contract 标准化；Memory 写入协议 + 候选记忆层；content_fingerprint 防重升级；Registry 索引；最后接 Cron
 - [ ] V0.5 自动发布、数据采集、增长优化闭环（先验证 10–20 轮选题/角度不重复，再接 Cron→团队→人工审核，最后才自动发布）
 
 ## 技术落地建议
