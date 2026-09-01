@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.1.0"
+  version: "2.2.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -23,6 +23,22 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 - 要养号、冷启动、涨粉、数据复盘
 
 **不使用**：简单事实查询、非内容运营类任务。
+
+## 任务分类（入口导航）
+
+收到请求先做任务分类（判定流程详见 `core/task-router/task-classifier.md`），映射为 7 种任务类型之一：
+
+| 任务类型 | 含义 | 是否产出内容 | 是否建团 |
+|---|---|---|---|
+| CONTENT_PRODUCTION | 从主题生产完整内容 | 是 | 建团 |
+| CONTENT_RECONSTRUCTION | 高重复内容重新构建 | 是（重构） | 不建团 |
+| CONTENT_RESEARCH | 只做内容/市场研究 | 否 | 不建团 |
+| CONTENT_ANALYSIS | 分析已有内容/爆款机制 | 否 | 不建团 |
+| CONTENT_REVIEW | 对已有内容做发布前审核 | 否 | 不建团 |
+| HUMANIZE_AUDIT | 去 AI 味 / 人味审查 | 否（改表达） | 不建团 |
+| ACCOUNT_GROWTH | 养号、增长、发布策略 | 否（策略） | 不建团 |
+
+分类完成后按任务类型路由：`CONTENT_PRODUCTION` 走 `workflows/content-pipeline.md` 全流程并触发需求澄清闸门；`ACCOUNT_GROWTH` 走 `workflows/account-growth.md`；其余轻量类型按 `core/task-router/task-types.md` 路由表直调对应成员或工具。**分类未完成不得调用任何工具。**
 
 ## 团队架构（6 名专家）
 
