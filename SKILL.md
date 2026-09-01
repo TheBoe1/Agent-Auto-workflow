@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.0"
+  version: "2.1.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -54,10 +54,14 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 ## 如何启动（编排 SOP）
 
-1. **主理人建团队**：team-lead 用 TeamCreate 建立团队，成员为其余 5 个 Agent ID。
-2. **按工作流调度**：依据 `workflows/content-pipeline.md` 或 `workflows/account-growth.md` 分阶段调度成员。
-3. **中间文件流转**：每阶段产出落盘 `runs/{run_id}/*.md`，头部带元信息，可追溯可回滚。
-4. **两道门禁**：素材门禁（无真实素材禁止写文案）+ 查重门禁（≥90% 拒绝、检索失败进风险确认）。
+0. **任务分级**：先判断本次任务复杂度，再决定是否建团——
+   - **轻量任务**：单点改写、去 AI 味、单点查重、简单分析。**不建团队**，team-lead 直调对应成员或工具完成，跳过 2-5 步。
+   - **完整任务**：选题生产、竞品研究、账号增长等，走完整流程（步骤 2-5）。
+1. **需求澄清闸门**：内容生产类任务，必须先确认**账号定位、目标受众、内容方向**三项；缺失即向用户追问（详见 `workflows/content-pipeline.md` Phase 0），确认前不得开工。轻量任务不受此限。
+2. **主理人建团队**：team-lead 用 TeamCreate 建立团队，成员为其余 5 个 Agent ID。
+3. **按工作流调度**：依据 `workflows/content-pipeline.md` 或 `workflows/account-growth.md` 分阶段调度成员。
+4. **中间文件流转**：每阶段产出落盘 `runs/{run_id}/*.md`，头部带元信息，可追溯可回滚。
+5. **两道门禁**：素材门禁（无真实素材禁止写文案）+ 查重门禁（≥90% 拒绝、检索失败进风险确认）。
 
 ## 工具依赖
 
@@ -73,6 +77,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 ## 参考文件
 
+- `registry/`：统一注册表索引（`agents.md` / `tools.md` / `memory.md` / `workflows.md`）。按需查找成员能力、工具定位、记忆类与工作流入口时先查注册表，再进对应文件。
 - `agents/`：6 个角色详细定义（职责、输入输出、工具权重）
 - `workflows/`：内容生产流水线 + 养号增长流程
 - `artifacts/templates/`：8 个中间文件模板
