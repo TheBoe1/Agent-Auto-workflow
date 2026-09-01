@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.2.0"
+  version: "2.3.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -39,6 +39,19 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 | ACCOUNT_GROWTH | 养号、增长、发布策略 | 否（策略） | 不建团 |
 
 分类完成后按任务类型路由：`CONTENT_PRODUCTION` 走 `workflows/content-pipeline.md` 全流程并触发需求澄清闸门；`ACCOUNT_GROWTH` 走 `workflows/account-growth.md`；其余轻量类型按 `core/task-router/task-types.md` 路由表直调对应成员或工具。**分类未完成不得调用任何工具。**
+
+## 复杂度分级（入口导航）
+
+分类后判断复杂度（判定规则详见 `core/complexity-router.md`）：
+
+| 级别 | 含义 | 典型请求 |
+|---|---|---|
+| L0 | 直接处理已有内容 | 把这段改口语一点 |
+| L1 | 少量工具辅助 | 分析这篇有没有 AI 味 |
+| L2 | 需要外部信息 | 研究最近热门方向 |
+| L3 | 完整流水线 | 每日选题 + 图文生产 |
+
+复杂度决定加载哪些资源（见 `core/context-loader.md`）：L0/L1 只加载目标工具；L2 加检索链；L3 才加载完整团队与工作流。
 
 ## 团队架构（6 名专家）
 
@@ -81,15 +94,13 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 ## 工具依赖
 
-| 工具 | 位置 | 用途 | 高权重 agent |
-|---|---|---|---|
-| content-research | `tools/research/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`--demo` 零配置 | competitor-scout（猎同频） |
-| humanize-writing | `tools/writing/humanize-writing.md` | 文本拟人化，LLM 抽象层，`--demo` 零配置 | viral-copywriter（缪生花） |
-| engagement-analyzer | `tools/engagement/engagement-analyzer.md` | 互动内容分析，输出报告，`--demo` 零配置 | growth-analyst（步得清） |
-| bb-browser *底层* | `tools/research/bb-browser.md` | 真实浏览器搜索（content-research 依赖） | competitor-scout |
-| research-workflow *底层* | `tools/research/research-workflow.md` | 结构化研究方法论（content-research 依赖） | competitor-scout |
+| 工具 | 位置 | 说明 |
+|---|---|---|
+| content-research | `tools/research/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`--demo` 零配置 |
+| humanize-writing | `tools/writing/humanize-writing.md` | 文本拟人化，LLM 抽象层，`--demo` 零配置 |
+| engagement-analyzer | `tools/engagement/engagement-analyzer.md` | 互动内容分析，输出报告，`--demo` 零配置 |
 
-> 三个应用工具均支持 `--demo` 零配置运行（用内置脱敏样例），真实场景仅需最小配置（Chrome / LLM key）。详见各工具文件与 `.env.example`。
+> 完整工具索引与高权重 agent 归属见 `registry/tools.md`；底层实现（bb-browser、research-workflow）与配置说明见 `tools/README.md` 与 `.env.example`。三个应用工具均支持 `--demo` 零配置运行。
 
 ## 参考文件
 
