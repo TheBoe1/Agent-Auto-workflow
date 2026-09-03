@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.3.0"
+  version: "2.4.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -101,6 +101,17 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 | engagement-analyzer | `tools/engagement/engagement-analyzer.md` | 互动内容分析，输出报告，`--demo` 零配置 |
 
 > 完整工具索引与高权重 agent 归属见 `registry/tools.md`；底层实现（bb-browser、research-workflow）与配置说明见 `tools/README.md` 与 `.env.example`。三个应用工具均支持 `--demo` 零配置运行。
+
+## 质量门禁
+
+所有产出进入最终输出前必须通过门禁（完整定义见 `core/quality-gates.md`，工具状态规则见 `core/tool-status.md`）。关键几条：
+
+- **素材分级**：D 级（无法核实的转述）禁止进入文案；C 级（UGC）仅做趋势，做素材需授权。
+- **素材存在**：无真实素材不落笔（ST-ID 为空禁止写文案）。
+- **查重**：≥90% 拒绝；70-90% 重构；检索失败进风险确认。
+- **平台安全**：虚构病例、编造医生身份、医疗敏感内容一律拦截。
+
+工具调用前先探针，按四态（AVAILABLE / DEGRADED / UNAVAILABLE / BLOCKED）处理；降级必须显式标注，禁止伪装为完整模式。
 
 ## 参考文件
 
