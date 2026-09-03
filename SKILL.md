@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.4.0"
+  version: "2.5.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -96,7 +96,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 | 工具 | 位置 | 说明 |
 |---|---|---|
-| content-research | `tools/research/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`--demo` 零配置 |
+| content-research | `tools/research/content-research.md` | 统一检索入口（封装 bb-browser + research-workflow），`domain=medical` 时启用 dxy 医疗专项热榜源，`--demo` 零配置 |
 | humanize-writing | `tools/writing/humanize-writing.md` | 文本拟人化，LLM 抽象层，`--demo` 零配置 |
 | engagement-analyzer | `tools/engagement/engagement-analyzer.md` | 互动内容分析，输出报告，`--demo` 零配置 |
 

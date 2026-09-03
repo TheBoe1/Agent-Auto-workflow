@@ -80,6 +80,8 @@ runs/{run_id}/
 **先读 Memory**：team-lead + 猎同频先读 `../memory/topics/`、`../memory/angles/angle-memory.md`（防主题/角度重复）、`../memory/stories/story-index.md`（可复用素材）。
 用 content-research 检索同类型内容与对标账号，输出趋势、对标、用户画像、竞争度，并做标题/结构/关键词/语义四维查重。
 
+> **医疗垂类（domain=medical）**：趋势 / 选题风向用 content-research 的 dxy 医疗专项源（丁香园热榜，只服务本 Phase 的趋势与查重）。dxy 热榜是论坛 UGC（素材分级 C 级），**只能做趋势参考，禁止直接作为 Phase 2 素材**；文案要用的医疗故事仍须走 story-collector 的真实验证（有来源、可核实、授权），详见 `../tools/research/content-research.md#医疗垂类专项源dxy-crawler`。
+
 查重判定（`similarity` + `content_fingerprint` 双轴）：
 - 七维 `content_fingerprint` 全同 → 直接拒绝（等同 HIGH）。
 - `similarity >= 0.90` → HIGH，拒绝重做。
