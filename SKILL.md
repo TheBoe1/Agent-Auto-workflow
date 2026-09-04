@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.6.0"
+  version: "2.6.1"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -38,7 +38,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 | HUMANIZE_AUDIT | 去 AI 味 / 人味审查 | 否（改表达） | 不建团 |
 | ACCOUNT_GROWTH | 养号、增长、发布策略 | 否（策略） | 不建团 |
 
-分类完成后按任务类型路由：`CONTENT_PRODUCTION` 走 `workflows/content-pipeline.md` 全流程并触发需求澄清闸门；`ACCOUNT_GROWTH` 走 `workflows/account-growth.md`；其余轻量类型按 `core/task-router/task-types.md` 路由表直调对应成员或工具。**分类未完成不得调用任何工具。**
+分类完成后按任务类型路由：`CONTENT_PRODUCTION` 走 `workflows/content-pipeline.md` 全流程并触发需求澄清闸门；`CONTENT_RECONSTRUCTION`（重构产新版）同样先过需求澄清闸门，再按 `core/task-router/task-types.md` 由 viral-copywriter 直调完成（不建团）；`ACCOUNT_GROWTH` 走 `workflows/account-growth.md`；其余不产新内容的轻量类型（RESEARCH / ANALYSIS / REVIEW / HUMANIZE_AUDIT）按 `core/task-router/task-types.md` 路由表直调对应成员或工具。**分类未完成不得调用任何工具。**
 
 ## 复杂度分级（入口导航）
 
@@ -89,7 +89,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 0. **任务分级**：先判断本次任务复杂度，再决定是否建团——
    - **轻量任务**：单点改写、去 AI 味、单点查重、简单分析。**不建团队**，team-lead 直调对应成员或工具完成，跳过 2-5 步。
    - **完整任务**：选题生产、竞品研究、账号增长等，走完整流程（步骤 2-5）。
-1. **需求澄清闸门**：内容生产类任务，必须先确认**账号定位、目标受众、内容方向**三项；缺失即向用户追问（详见 `workflows/content-pipeline.md` Phase 0），确认前不得开工。轻量任务不受此限。
+1. **需求澄清闸门**：凡**产出新内容**的任务（`CONTENT_PRODUCTION` 生产，以及 `CONTENT_RECONSTRUCTION` 重构——重构也是产出新版本），必须先确认**账号定位、目标受众、内容方向**三项；缺失即向用户追问（详见 `workflows/content-pipeline.md` Phase 0），确认前不得开工。轻量任务（HUMANIZE_AUDIT 等只改表达不产新内容）不受此限。
 2. **主理人建团队**：team-lead 用 TeamCreate 建立团队，成员为其余 5 个 Agent ID。
 3. **按工作流调度**：依据 `workflows/content-pipeline.md` 或 `workflows/account-growth.md` 分阶段调度成员。
 4. **中间文件流转**：每阶段产出落盘 `runs/{run_id}/*.md`，头部带元信息，可追溯可回滚。

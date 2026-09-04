@@ -7,7 +7,7 @@
 | 任务类型 | 含义 | 是否产出内容 | 是否建团 | 路由 |
 |---|---|---|---|---|
 | `CONTENT_PRODUCTION` | 从主题生产完整内容 | 是 | 建团 | `workflows/content-pipeline.md` 全流程 |
-| `CONTENT_RECONSTRUCTION` | 高重复内容重新构建（蓝海角度） | 是（重构） | 不建团 | viral-copywriter 直调 + 查重门禁 |
+| `CONTENT_RECONSTRUCTION` | 高重复内容重新构建（蓝海角度） | 是（重构） | 不建团 | 需求澄清闸门 → viral-copywriter 直调 + 查重门禁 |
 | `CONTENT_RESEARCH` | 只做内容/市场研究 | 否 | 不建团 | content-research（competitor-scout） |
 | `CONTENT_ANALYSIS` | 分析已有内容/爆款机制 | 否 | 不建团 | content-research + engagement-analyzer（growth-analyst） |
 | `CONTENT_REVIEW` | 对已有内容做发布前审核 | 否 | 不建团 | humanize-writing + 查重 + 平台合规核对 |
@@ -26,6 +26,7 @@
 
 - 用户话术："这篇和 XX 太像了，换个角度重写"、"重构这篇"
 - 判定要点：已有内容 + 查重结论为高重复，需换蓝海角度重写
+- **需求澄清**：重构也产出新版本，须先过需求澄清闸门（账号定位 / 目标受众 / 内容方向，见 SKILL.md 编排 SOP 与 `content-pipeline.md` Phase 0）——但重构的对象是既有内容，账号 / 受众若与原篇一致且可从原篇推断，可只确认内容方向；无法推断时仍需追问。
 
 ### CONTENT_RESEARCH（内容研究）
 
