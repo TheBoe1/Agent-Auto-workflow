@@ -13,7 +13,7 @@
 - 账号的**语言风格**是什么（去 AI 味靠它，不是每次重新猜）
 - 什么**内容真的有效**（learning loop 的数据基础）
 
-## 六大记忆类
+## 七大记忆类
 
 | # | 记忆类 | 目录 | 职责 |
 |---|--------|------|------|
@@ -23,6 +23,11 @@
 | 04 | story-memory | `stories/story-index.md` | 真实素材资产库（ST-ID 资产化，非一次性） |
 | 05 | style-memory | `account/style.md` | 账号语言 DNA、禁止表达、标题/开头/结尾风格 |
 | 06 | performance-memory | `performance/performance-memory.md` | 发布后数据 → 有效内容规律 |
+| 07 | **pattern-memory** | `patterns/` | **内容机制库**：`viral-patterns.md`（正文骨架 PAT-ID）+ `engagement-patterns.md`（互动触发 ENG-ID） |
+
+> **Angle ≠ Pattern**：角度是「从哪儿切入」（存 `angles/`），机制是「怎么展开 / 怎么引发互动」（存 `patterns/`）。
+> 两者正交——角度用尽可换机制，机制用老可换角度。详见 `patterns/viral-patterns.md` 开篇。
+> Pattern 与 `content_fingerprint.structure` 绑定：**换 PAT-ID 即构成有效重构**，是撞车后成本最低的差异化手段。
 
 ## 唯一管理者：team-lead（甄有料）
 
@@ -30,7 +35,7 @@
 「用过类似」，Memory 自己会打架。
 
 - **READ**：所有 Agent 在任务开始时**必须**读相关记忆类
-  （猎同频读 `topics/`+`angles/` 防重复；缪生花读 `account/style` 对齐语气；采真人读 `stories/` 复用资产；步得清读 `performance/` 对齐打法）。
+  （猎同频读 `topics/`+`angles/` 防重复；缪生花读 `account/style` 对齐语气、**`patterns/` 选正文骨架与互动钩子**；采真人读 `stories/` 复用资产；步得清读 `performance/`+**`patterns/`** 对齐打法）。
 - **WRITE**：**只有 team-lead 能写 Memory**。各 Agent 的产出落盘在 `runs/{run_id}/`（执行中间文件），
   run 结束后由 team-lead 执行「记忆更新协议」（`agents/team-lead.md` 的 Phase 7），把验证过的内容
   **promote** 进 Memory（append / version，**禁止直接覆盖历史**）。
@@ -75,7 +80,7 @@ runs/{run_id}/          # 单次执行中间文件（用完即归档，gitignore
    ↓ 甄有料审核
 memory-candidates/      # 候选记忆（带 candidate_id / run_id / evidence / action）
    ↓ APPEND / MERGE / UPDATE / REJECT
-memory/                 # 长期资产（六大记忆类）
+memory/                 # 长期资产（七大记忆类）
 ```
 
 候选记忆示例：

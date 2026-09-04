@@ -17,17 +17,20 @@
 | L2 | L1 + 检索工具链（`tools/research/*`）+ 分类存疑时 `core/task-router/task-classifier.md` 细判 |
 | L3 | L2 + `agents/team-lead.md` + `workflows/content-pipeline.md` + 相关成员定义（`agents/*.md`）+ 相关 `memory/` |
 
+> **`references/` 按需加载**：本表不含 references，它不按复杂度触发，而按**具体知识点需求**触发。
+> 当需要领域细节时（如平台规则、医疗合规细则、去 AI 味手法清单），查 `references/README.md` 的登记表，命中才读。**无需求不读**。
+
 ## 按任务类型加载（agent / memory）
 
 | 任务类型 | 主调 agent | 读 memory |
 |---|---|---|
-| CONTENT_PRODUCTION | 全员 | topics/ angles/ stories/ account/style/ content/ |
-| CONTENT_RECONSTRUCTION | viral-copywriter | angles/ content/ |
+| CONTENT_PRODUCTION | 全员 | topics/ angles/ stories/ account/style/ content/ **patterns/** |
+| CONTENT_RECONSTRUCTION | viral-copywriter | angles/ content/ **patterns/**（换 PAT-ID 优先于换角度） |
 | CONTENT_RESEARCH | competitor-scout | topics/ |
 | CONTENT_ANALYSIS | growth-analyst | performance/ |
 | CONTENT_REVIEW | team-lead | content/ |
 | HUMANIZE_AUDIT | viral-copywriter | account/style/ |
-| ACCOUNT_GROWTH | growth-analyst | performance/ account/ |
+| ACCOUNT_GROWTH | growth-analyst | performance/ account/ **patterns/**（机制表现回测） |
 
 ## 加载纪律
 
@@ -35,3 +38,4 @@
 2. **不相关工具不加载**：工具说明在 `tools/` 与 `registry/tools.md`，按任务类型选择。
 3. **memory 只读**：所有读取遵循"team-lead 唯一写"协议（见 SKILL.md 与 `memory/README.md`）。
 4. **分级判断错误时**：按 `complexity-router.md` 的升级 / 降级规则修正后重新规划。
+5. **references 按知识点触发**：`references/` 不参与复杂度分级，只在需要领域细节时按 `references/README.md` 登记表命中才读；无需求不读。

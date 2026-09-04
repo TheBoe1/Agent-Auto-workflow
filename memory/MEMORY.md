@@ -23,7 +23,10 @@
 
 ## Content Memory（长期内容资产系统 · V0.3）
 
-`memory/` 不再是单一 MEMORY.md，而是六大记忆类：content-history / topic-memory / angle-memory / story-memory / style-memory / performance-memory。详见 `memory/README.md`。
+`memory/` 不再是单一 MEMORY.md，而是七大记忆类：content-history / topic-memory / angle-memory / story-memory / style-memory / performance-memory / **pattern-memory**。详见 `memory/README.md`。
+
+> **pattern-memory（V0.4-pref 新增）**：`patterns/viral-patterns.md`（正文骨架 PAT-ID）+ `patterns/engagement-patterns.md`（互动触发 ENG-ID）。
+> **Angle ≠ Pattern**——角度是「从哪儿切入」（`angles/`），机制是「怎么展开 / 怎么引发互动」（`patterns/`）。PAT-ID 绑定 `content_fingerprint.structure`，换机制即有效重构。
 
 - **唯一管理者 = team-lead**：Agent 只 READ Memory，不得 WRITE；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。
 - **防重复三层**：标题查重（猎同频）→ 角度防重复（门禁③，angles/）→ 内容历史（content/）。

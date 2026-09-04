@@ -52,7 +52,7 @@
 
 Memory 不是「聊天记忆」，而是团队的**内容资产库**——账号过去说过什么、用过什么角度、讲过什么故事、采用过什么表达、什么内容真正有效。它解决的是反复踩同一个重复坑的问题（今天写「用了 30 天 AI」、明天又写一遍）。
 
-六大记忆类（详见 `memory/README.md`）：
+七大记忆类（详见 `memory/README.md`）：
 
 | 记忆类 | 路径 | 作用 |
 |--------|------|------|
@@ -62,6 +62,9 @@ Memory 不是「聊天记忆」，而是团队的**内容资产库**——账号
 | story-memory | `memory/stories/story-index.md` | 真实素材资产库（ST-ID 资产化，非一次性） |
 | style-memory | `memory/account/style.md` | 账号语言 DNA（去 AI 味靠它，而非每次重猜） |
 | performance-memory | `memory/performance/performance-memory.md` | 发布后数据 → 有效规律（learning loop 基础） |
+| **pattern-memory** | `memory/patterns/` | **内容机制库**：`viral-patterns.md`（正文骨架 PAT-ID）+ `engagement-patterns.md`（互动触发 ENG-ID） |
+
+> **Angle ≠ Pattern**：角度是「从哪儿切入」（`angles/`），机制是「怎么展开 / 怎么引发互动」（`patterns/`）。两者正交——角度用尽可换机制，机制用老可换角度。PAT-ID 绑定 `content_fingerprint.structure`，**换机制即构成有效重构**，是撞车后成本最低的差异化手段。
 
 > **唯一管理者 = team-lead**：Agent 只 READ Memory，不得直接写；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。这是防止 Memory 自相矛盾的关键设计。
 
@@ -78,7 +81,7 @@ MCN-Agent-Studio/
 ├── registry/                    # 索引（单一事实来源，team-lead 引用而非内嵌路径）
 │   ├── agents.md                #   Agent 索引表
 │   ├── tools.md                #   工具索引（基础/整合/业务三层）
-│   ├── memory.md               #   记忆索引（六大类）
+│   ├── memory.md               #   记忆索引（七大类）
 │   └── workflows.md            #   工作流索引 + 业务调用链
 ├── agents/                      # 6 个专家角色定义（Markdown）
 │   ├── team-lead.md             #   主理人（含 SOP 编排 + 工具清单 + 中间文件流转）
@@ -107,7 +110,7 @@ MCN-Agent-Studio/
 ├── artifacts/                   # 中间文件模板
 │   └── templates/
 │       └── TEMPLATES.md         #   8 个中间文件模板（含元信息头）
-└── memory/                      # Content Memory 六大记忆类（跨会话持久化）
+└── memory/                      # Content Memory 七大记忆类（跨会话持久化）
     ├── README.md                #   系统说明 + 唯一管理者(team-lead)规则
     ├── MEMORY.md                #   项目长期记忆（架构/工具/约束）
     ├── CHANGELOG.md             #   变更日志
@@ -126,6 +129,9 @@ MCN-Agent-Studio/
     │   └── angle-memory.md      #     主题→已用角度（防角度重复）
     ├── stories/                 #   story-memory
     │   └── story-index.md       #     真实素材资产库（ST-ID）
+    ├── patterns/                #   pattern-memory（内容机制库）
+    │   ├── viral-patterns.md    #     正文骨架机制（PAT-ID）
+    │   └── engagement-patterns.md #   互动触发机制（ENG-ID）
     └── performance/             #   performance-memory
         └── performance-memory.md #    发布后数据 → 有效规律
 ```

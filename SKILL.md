@@ -4,7 +4,7 @@ description: "AI-MCN 内容运营专家团，模拟真实 MCN 公司团队完成
 license: MIT
 metadata:
   author: TheBoe1
-  version: "2.5.0"
+  version: "2.6.0"
   type: orchestrator
   mode: assistive
   domain: content-operations
@@ -68,7 +68,7 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 
 系统由四层构成：**Agents**（5 名专业成员）+ **Tools**（可被调用的能力）+ **Memory**（长期内容资产）+ **team-lead**（编排者 / 规则制定者 / 记忆唯一管理者 / 最终审核者，即 MCN Operating System）。
 
-**Content Memory（长期内容资产）** 是团队防重复与积累账号资产的核心，包含六大记忆类：
+**Content Memory（长期内容资产）** 是团队防重复与积累账号资产的核心，包含七大记忆类：
 
 | 记忆类 | 路径 | 作用 |
 |--------|------|------|
@@ -78,6 +78,9 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 | story-memory | `memory/stories/story-index.md` | 真实素材资产库（ST-ID） |
 | style-memory | `memory/account/style.md` | 账号语言 DNA（去 AI 味靠它） |
 | performance-memory | `memory/performance/performance-memory.md` | 发布后数据 → 有效规律 |
+| **pattern-memory** | `memory/patterns/` | **内容机制库**：`viral-patterns.md`（正文骨架 PAT-ID）+ `engagement-patterns.md`（互动触发 ENG-ID）；PAT-ID 绑定 `content_fingerprint.structure`，换机制即有效重构 |
+
+> **Angle ≠ Pattern**：角度是「从哪儿切入」（`angles/`），机制是「怎么展开 / 怎么引发互动」（`patterns/`）。两者正交，角度用尽可换机制，机制用老可换角度。
 
 > **唯一管理者 = team-lead**：Agent 只 READ Memory，不得直接写；记忆更新由 team-lead 在每轮结束的「记忆更新协议」（Phase 7）统一执行（append / version，禁止覆盖历史）。详见 `memory/README.md` 与 `agents/team-lead.md`。
 
@@ -119,7 +122,8 @@ AI-MCN 内容运营专家团。模拟一家真实 MCN 公司，让 AI 完成从�
 - `agents/`：6 个角色详细定义（职责、输入输出、工具权重）
 - `workflows/`：内容生产流水线 + 养号增长流程
 - `artifacts/templates/`：8 个中间文件模板
-- `memory/`：Content Memory 六大记忆类（详见 `memory/README.md`，唯一管理者 = team-lead）
+- `memory/`：Content Memory 七大记忆类（详见 `memory/README.md`，唯一管理者 = team-lead）
+- `references/`：复杂知识按需加载区（领域知识 / 平台规则 / 合规细则）。**不按复杂度触发，按知识点需求触发**——需要领域细节时先查 `references/README.md` 登记表，命中才读，无需求不读。
 
 ## 铁律
 

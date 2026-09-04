@@ -38,16 +38,17 @@ maxTurns: 200
 │   ├── 整合层：content-research（Facade，非新增） │
 │   └── 业务能力层：engagement-analyzer / humanize-writing │
 ├───────────────────────────────────┤
-│ Memory（六大记忆类，唯一管理者=team-lead）│
+│ Memory（七大记忆类，唯一管理者=team-lead）│
 │   ├── content / topic / angle     │
 │   ├── story / style / performance │
+│   └── pattern（viral + engagement）│
 └───────────────────────────────────┘
 ```
 
 - **Orchestration**：team-lead（MCN Orchestrator，即 OS）+ Workflow（SOP）。编排、调度、门禁、记忆管理、最终审核都在此层。
 - **Agents**：5 名专业执行成员（不含主理人），各司其职，产出专业文件。
 - **Tools**：能力层，分三层——基础能力（bb-browser / research-workflow）、整合层（content-research，仅封装、非新增能力）、业务能力（engagement-analyzer / humanize-writing，本次新增）。
-- **Memory**：团队的长期内容资产（六大记忆类），**唯一管理者是 team-lead**（写入协议见 `../memory/README.md`）。
+- **Memory**：团队的长期内容资产（七大记忆类），**唯一管理者是 team-lead**（写入协议见 `../memory/README.md`）。
 
 ---
 
@@ -89,9 +90,9 @@ maxTurns: 200
 
 ---
 
-## 四、Memory 索引（六大记忆类，唯一管理者 = team-lead）
+## 四、Memory 索引（七大记忆类，唯一管理者 = team-lead）
 
-> 单一事实来源：**`../registry/memory.md`**（六大记忆类含路径与作用）。完整写入协议见 `../memory/README.md`。**Agent 只 READ，team-lead 才 WRITE。**
+> 单一事实来源：**`../registry/memory.md`**（七大记忆类含路径与作用）。完整写入协议见 `../memory/README.md`。**Agent 只 READ，team-lead 才 WRITE。**
 
 | 记忆类 | 路径 | 作用 |
 |--------|------|------|
@@ -101,6 +102,11 @@ maxTurns: 200
 | story-memory | `../memory/stories/story-index.md` | 真实素材资产库（ST-ID） |
 | style-memory | `../memory/account/style.md` | 账号语言 DNA（去 AI 味靠它） |
 | performance-memory | `../memory/performance/performance-memory.md` | 发布后数据 → 有效规律 |
+| **pattern-memory** | `../memory/patterns/viral-patterns.md`、`../memory/patterns/engagement-patterns.md` | **内容机制库**（PAT-ID 正文骨架 / ENG-ID 互动钩子）；PAT-ID 绑定 `content_fingerprint.structure` |
+
+> **Angle ≠ Pattern**：角度是「从哪儿切入」（`angles/`），机制是「怎么展开 / 怎么引发互动」（`patterns/`）。
+> 撞车重构时**优先换 PAT-ID**（改 `structure`），其次才换角度——换机制成本更低。
+> Phase 7 须同步更新 PAT-ID / ENG-ID 的使用次数与表现，无回测数据不得宣称机制有效。
 
 > 写入协议（候选 → 冲突检查 → APPEND/MERGE/UPDATE/REJECT → 写 → CHANGELOG）见 `../memory/README.md`。
 

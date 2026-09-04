@@ -12,6 +12,7 @@
 | angle-memory | `../memory/angles/angle-memory.md` | 主题→已用角度（**防角度重复，最关键**） |
 | story-memory | `../memory/stories/story-index.md` | 真实素材资产库（ST-ID） |
 | performance-memory | `../memory/performance/performance-memory.md` | 发布后数据 → 有效规律 |
+| **pattern-memory** | `../memory/patterns/viral-patterns.md`（正文骨架 PAT-ID）、`../memory/patterns/engagement-patterns.md`（互动触发 ENG-ID） | **内容机制库**；PAT-ID 绑定 `content_fingerprint.structure`，换机制即有效重构（Angle ≠ Pattern） |
 
 ## 写入协议（Write Protocol，摘要）
 1. Agent 产出落 `runs/{run_id}/`，**不直接写 memory/**。
